@@ -1,3 +1,3 @@
 fn main() {
-    println!("Hello, world!");
+    println!("2 + 3 = {}", 2 + 3);
 }
