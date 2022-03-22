@@ -1,5 +1,7 @@
 fn main() {
-    println!("2 + 3 = {}", 2 + 3);
-    println!("{}", 6.5 / 2.5);
-    println!("{}", 6.5 % 2.5);
+    let length: i32;
+    length = 5;
+    println!("length is {}", length);
+
+    println!(r"\\\\\\\\\\");
 }
