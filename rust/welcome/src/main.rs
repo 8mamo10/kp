@@ -1,3 +1,5 @@
+use proconio::input;
+
 fn main() {
     let length: i32;
     length = 5;
@@ -15,4 +17,10 @@ fn main() {
     let avogadro_constant;
     avogadro_constant = 6.02e+23;
     println!("{}", avogadro_constant);
+
+    input! {
+        a: i32,
+        b: i32,
+    }
+    println!("{}", a + b);
 }
