@@ -21,6 +21,9 @@ fn main() {
     input! {
         a: i32,
         b: i32,
+        c: f64,
+        d: f64,
     }
     println!("{}", a + b);
+    println!("{}", c * d);
 }
