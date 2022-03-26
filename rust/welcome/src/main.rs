@@ -48,4 +48,9 @@ fn main() {
     let abs;
     abs = if x >= 0 { x } else { -x };
     println!("abs: {}", abs);
+
+    //let r = x % 10;
+    let r = x.rem_euclid(10);
+    assert!(0 <= r && r < 10, "remainder must be greater or equal 0");
+    println!("remainder: {}", r);
 }
