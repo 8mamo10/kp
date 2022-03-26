@@ -19,11 +19,33 @@ fn main() {
     println!("{}", avogadro_constant);
 
     input! {
-        a: i32,
-        b: i32,
-        c: f64,
-        d: f64,
+        // a: i32,
+        // b: i32,
+        // c: f64,
+        // d: f64,
+        x: i32,
     }
-    println!("{}", a + b);
-    println!("{}", c * d);
+    // println!("{}", a + b);
+    // println!("{}", c * d);
+
+    if x < 10 {
+        println!("less than 10");
+    } else {
+        println!("more than or equal 10");
+    }
+
+    let hoge = 10;
+    println!("{}", hoge);
+    let hoge = 20;
+    println!("{}", hoge);
+    println!("before block: {}", hoge);
+    let hoge = {
+        println!("in block: {}", hoge);
+        30
+    };
+    println!("after block: {}", hoge);
+
+    let abs;
+    abs = if x >= 0 { x } else { -x };
+    println!("abs: {}", abs);
 }
