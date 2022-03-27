@@ -53,4 +53,31 @@ fn main() {
     let r = x.rem_euclid(10);
     assert!(0 <= r && r < 10, "remainder must be greater or equal 0");
     println!("remainder: {}", r);
+
+    let tuple: (i32, f64, i32) = (10, 2.5, 20);
+    println!("1: {}", tuple.0);
+    println!("2: {}", tuple.1);
+    println!("3: {}", tuple.2);
+
+    let tuple = (10, 2.5);
+    let (x, y) = tuple;
+    assert_eq!(x, 10);
+    assert_eq!(y, 2.5);
+
+    let (x, y): (i32, f64) = (123456, 6.67430e-11);
+    assert_eq!(x, 123456);
+    assert_eq!(y, 6.67430e-11);
+
+    let unit: ();
+    unit = {
+        println!("return ()");
+    };
+    assert_eq!(unit, ());
+
+    let array: [i64; 5];
+    array = [1, 2, 3, 4, 5];
+    assert_eq!(array[0], 1_i64);
+    assert_eq!(array[4], 5_i64);
+    let array2 = [1, 2, 3, 4, 5];
+    assert_eq!(array, array2);
 }
