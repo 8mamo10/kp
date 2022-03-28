@@ -28,23 +28,26 @@ fn main() {
     // println!("{}", a + b);
     // println!("{}", c * d);
 
+    // if
     if x < 10 {
         println!("less than 10");
     } else {
         println!("more than or equal 10");
     }
 
+    // shadowing
     let hoge = 10;
     println!("{}", hoge);
     let hoge = 20;
     println!("{}", hoge);
+
+    // block
     println!("before block: {}", hoge);
     let hoge = {
         println!("in block: {}", hoge);
         30
     };
     println!("after block: {}", hoge);
-
     let abs;
     abs = if x >= 0 { x } else { -x };
     println!("abs: {}", abs);
@@ -54,6 +57,7 @@ fn main() {
     assert!(0 <= r && r < 10, "remainder must be greater or equal 0");
     println!("remainder: {}", r);
 
+    // tuple
     let tuple: (i32, f64, i32) = (10, 2.5, 20);
     println!("1: {}", tuple.0);
     println!("2: {}", tuple.1);
@@ -74,10 +78,17 @@ fn main() {
     };
     assert_eq!(unit, ());
 
+    // array
     let array: [i64; 5];
     array = [1, 2, 3, 4, 5];
     assert_eq!(array[0], 1_i64);
     assert_eq!(array[4], 5_i64);
     let array2 = [1, 2, 3, 4, 5];
     assert_eq!(array, array2);
+
+    // format
+    println!("{0} {0} {1} {1}", -2, 10);
+    println!("{hoge} {fuga} {hoge}", hoge = -2, fuga = 10);
+    println!("{}", 79);
+    println!("{:6}", 79);
 }
