@@ -91,4 +91,9 @@ fn main() {
     println!("{hoge} {fuga} {hoge}", hoge = -2, fuga = 10);
     println!("{}", 79);
     println!("{:6}", 79);
+    // debug
+    let tuple = (10i32, 20i32, 30i32);
+    println!("{} {} {}", tuple.0, tuple.1, tuple.2);
+    println!("{:?}", tuple);
+    println!("{:#?}", tuple);
 }
