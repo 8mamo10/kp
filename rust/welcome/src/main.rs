@@ -96,4 +96,10 @@ fn main() {
     println!("{} {} {}", tuple.0, tuple.1, tuple.2);
     println!("{:?}", tuple);
     println!("{:#?}", tuple);
+
+    // reference
+    let hoge: i8 = 100;
+    let reference = &hoge;
+    println!("{} {:p}", reference, reference);
+    assert_eq!(*reference, 100_i8);
 }
