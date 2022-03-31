@@ -115,4 +115,18 @@ fn main() {
     assert_eq!(copied, 10);
     println!("hoge: {}, {:p}", &hoge, &hoge);
     println!("copied: {} {:p}", &copied, &copied);
+
+    // lifetime
+    let reference;
+    {
+        let hoge = 100;
+        reference = &hoge;
+        println!("{}", reference);
+    };
+    // `hoge` does not live long enough
+    //println!("{}", reference);
+
+    let reference = &100;
+    println!("{:p}", reference);
+    assert_eq!(*reference, 100);
 }
