@@ -91,6 +91,7 @@ fn main() {
     println!("{hoge} {fuga} {hoge}", hoge = -2, fuga = 10);
     println!("{}", 79);
     println!("{:6}", 79);
+
     // debug
     let tuple = (10i32, 20i32, 30i32);
     println!("{} {} {}", tuple.0, tuple.1, tuple.2);
@@ -102,4 +103,16 @@ fn main() {
     let reference = &hoge;
     println!("{} {:p}", reference, reference);
     assert_eq!(*reference, 100_i8);
+
+    let tuple: (i32, f64) = (10, 3.14);
+    let reference = &tuple;
+    assert_eq!(reference.0, 10_i32);
+    assert_eq!(reference.1, 3.14_f64);
+
+    let hoge = 10;
+    let reference = &hoge;
+    let &copied = reference;
+    assert_eq!(copied, 10);
+    println!("hoge: {}, {:p}", &hoge, &hoge);
+    println!("copied: {} {:p}", &copied, &copied);
 }
