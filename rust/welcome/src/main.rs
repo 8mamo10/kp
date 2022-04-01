@@ -129,4 +129,13 @@ fn main() {
     let reference = &100;
     println!("{:p}", reference);
     assert_eq!(*reference, 100);
+
+    // for
+    let primes = [2, 3, 5, 7];
+    for p in &primes {
+        println!("a:{}", p);
+    }
+    for p in primes {
+        println!("b:{}", p);
+    }
 }
