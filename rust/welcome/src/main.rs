@@ -163,4 +163,35 @@ fn main() {
     for &(ref number, ref weight) in &elements {
         println!("{}: {:.1}", number, weight);
     }
+
+    // mutable
+    let mut hoge: i32;
+    hoge = 30;
+    assert_eq!(hoge, 30);
+    println!("{:p}", &hoge);
+    hoge = 20;
+    assert_eq!(hoge, 20);
+    println!("{:p}", &hoge);
+
+    let (mut hoge, fuga) = (10, 20);
+    println!("{}", hoge);
+    hoge = 100;
+    println!("{}", hoge);
+    hoge = 200;
+    // cannot assign twice to immutable variable `fuga`
+    // fuga = 200;
+    println!("{}", hoge);
+    println!("{}", fuga);
+
+    // uninitialized
+    input! {
+        input: i32,
+    }
+    //use of possibly-uninitialized `nomalized`
+    //let mut nomalized;
+    //if input >= 0 {
+    //    nomalized = 1;
+    //}
+    let normalized = if input >= 0 { 1 } else { -1 };
+    println!("{}", normalized);
 }
