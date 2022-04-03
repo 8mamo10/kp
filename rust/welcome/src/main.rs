@@ -138,4 +138,29 @@ fn main() {
     for p in primes {
         println!("b:{}", p);
     }
+
+    // pattern match
+    let elements: [(i32, f64); 5] = [(6, 12.0), (7, 14.0), (8, 16.0), (15, 31.0), (16, 32.1)];
+    for &(number, weight) in &elements {
+        println!("{}: {:.1}", number, weight);
+    }
+    for (number, weight) in &elements {
+        println!("{}: {:.1}", number, weight);
+    }
+    for (number, weight) in elements {
+        println!("{}: {:.1}", number, weight);
+    }
+
+    let hoge = 10;
+    let ref reference = hoge;
+    assert_eq!(*reference, 10);
+
+    let carbon = (6, 12.0);
+    let (ref number, ref weight) = carbon;
+    assert_eq!(*number, 6);
+    assert_eq!(*weight, 12.0);
+
+    for &(ref number, ref weight) in &elements {
+        println!("{}: {:.1}", number, weight);
+    }
 }
