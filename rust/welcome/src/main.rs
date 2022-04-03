@@ -194,4 +194,12 @@ fn main() {
     //}
     let normalized = if input >= 0 { 1 } else { -1 };
     println!("{}", normalized);
+
+    let array = [30, 20, 30];
+    let mut sum = 0;
+    for num in array {
+        sum += num
+    }
+    assert_eq!(sum, 80);
+    assert_eq!(sum, array.iter().sum());
 }
