@@ -234,4 +234,10 @@ fn main() {
     // cannot borrow `hoge` as mutable, as it is not declared as mutable
     //let hoge = 10;
     //let reference = &mut hoge;
+
+    let mut hoge = 10;
+    let reference = &mut hoge;
+    // cannot use `hoge` because it was mutably borrowed
+    //let fuga = hoge + 20;
+    *reference += 30;
 }
