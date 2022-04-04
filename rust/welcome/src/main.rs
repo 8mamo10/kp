@@ -216,4 +216,22 @@ fn main() {
     assert_eq!(*reference1, 10);
     assert_eq!(*reference2, 10);
     hoge = 20;
+
+    // mutable reference
+    let hoge = 10;
+    let fuga = 20;
+    let mut reference = &hoge;
+    reference = &fuga;
+    reference = &hoge;
+    reference = &10;
+
+    let mut hoge = 10;
+    let reference = &mut hoge;
+    assert_eq!(*reference, 10);
+    *reference = 20;
+    assert_eq!(*reference, 20);
+
+    // cannot borrow `hoge` as mutable, as it is not declared as mutable
+    //let hoge = 10;
+    //let reference = &mut hoge;
 }
