@@ -202,4 +202,18 @@ fn main() {
     }
     assert_eq!(sum, 80);
     assert_eq!(sum, array.iter().sum());
+
+    let mut hoge = 10;
+    let reference = &hoge;
+    println!("{}", reference);
+    // cannot assign to `hoge` because it is borrowed
+    //hoge = 20;
+    println!("{}", reference);
+
+    let mut hoge = 10;
+    let reference1 = &hoge;
+    let reference2 = &hoge;
+    assert_eq!(*reference1, 10);
+    assert_eq!(*reference2, 10);
+    hoge = 20;
 }
