@@ -240,4 +240,15 @@ fn main() {
     // cannot use `hoge` because it was mutably borrowed
     //let fuga = hoge + 20;
     *reference += 30;
+
+    // type force
+    let mut hoge: i32 = 10;
+    let immutable_reference = &hoge;
+    // mismatched types
+    // types differ in mutability
+    //let mutable_reference: &mut i32 = immutable_reference;
+
+    let mutable_reference = &mut hoge;
+    let immutable_reference: &i32 = mutable_reference;
+    assert_eq!(*immutable_reference, 10);
 }
