@@ -251,4 +251,28 @@ fn main() {
     let mutable_reference = &mut hoge;
     let immutable_reference: &i32 = mutable_reference;
     assert_eq!(*immutable_reference, 10);
+
+    let mut hoge = 10;
+    let &mut copied = &mut hoge;
+    // mismatched types
+    // types differ in mutability
+    // let &mut copied = &hoge;
+    //let &copied = &mut hoge;
+
+    let mut hoge = 10;
+    let ref reference = hoge;
+    assert_eq!(*reference, 10);
+
+    let mut hoge = 10;
+    let ref mut reference = hoge;
+    // the order of `mut` and `ref` is incorrect
+    //let mut ref reference = hoge;
+    *reference = 20;
+    assert_eq!(*reference, 20);
+
+    let mut array = [10, 20, 30];
+    for i in &mut array {
+        *i += 1;
+    }
+    println!("{:?}", array);
 }
