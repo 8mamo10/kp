@@ -275,4 +275,10 @@ fn main() {
         *i += 1;
     }
     println!("{:?}", array);
+
+    // vector
+    let vector: Vec<i32>;
+    vec![1, 2, 3];
+    vec![1; 10];
+    Vec::<i32>::new();
 }
