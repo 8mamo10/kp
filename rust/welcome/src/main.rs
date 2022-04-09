@@ -313,4 +313,16 @@ fn main() {
     vector.pop();
 
     println!("{:?}", vector);
+
+    input! {
+        n: usize,
+        vector: [i32; n],
+    }
+    println!("{} {:?}", n, vector);
+
+    let mut sum = 0;
+    for num in &vector {
+        sum += num;
+    }
+    println!("sum: {}", sum);
 }
