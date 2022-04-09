@@ -281,4 +281,36 @@ fn main() {
     vec![1, 2, 3];
     vec![1; 10];
     Vec::<i32>::new();
+
+    let vector: Vec<i32> = vec![1, 2, 3];
+    assert_eq!(vector.len(), 3_usize);
+    assert_eq!(vector[0], 1_i32);
+    assert_eq!(vector[1], 2_i32);
+    assert_eq!(vector[2], 3_i32);
+    // index out of bounds: the len is 3 but the index is 3
+    //assert_eq!(vector[3], 4_i32);
+    let mut vector: Vec<i32> = vec![1, 2, 3];
+    vector[1] = 10;
+    println!("{:?}", vector);
+
+    let vector = vec![1, 2, 3];
+    assert_eq!(vector[2], 3_i64);
+
+    let mut vector = Vec::new();
+    assert_eq!(vector.len(), 0);
+
+    vector.push(10);
+    vector.push(20);
+    vector.push(30);
+    println!("{:?}", vector);
+
+    vector.push(40_i64);
+    vector.push(50_i64);
+    println!("{:?}", vector);
+
+    vector.pop();
+    vector.pop();
+    vector.pop();
+
+    println!("{:?}", vector);
 }
