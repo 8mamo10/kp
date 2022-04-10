@@ -18,6 +18,7 @@ fn main() {
     avogadro_constant = 6.02e+23;
     println!("{}", avogadro_constant);
 
+    println!("---input!");
     input! {
         // a: i32,
         // b: i32,
@@ -184,6 +185,7 @@ fn main() {
     println!("{}", fuga);
 
     // uninitialized
+    println!("---uninitialized");
     input! {
         input: i32,
     }
@@ -313,7 +315,7 @@ fn main() {
     vector.pop();
 
     println!("{:?}", vector);
-
+    println!("---vector");
     input! {
         n: usize,
         vector: [i32; n],
@@ -325,4 +327,68 @@ fn main() {
         sum += num;
     }
     println!("sum: {}", sum);
+
+    // break
+    let array = [2, 3, 0, 4, 5];
+    for &i in &array {
+        if i == 0 {
+            break;
+        }
+        println!("{}", i);
+    }
+    println!();
+
+    // continue
+    for &i in &array {
+        if i == 0 {
+            continue;
+        }
+        println!("{}", i);
+    }
+    println!();
+
+    // ..
+    for i in 0..5 {
+        println!("{}", i);
+    }
+
+    // ..=
+    for i in 0..=5 {
+        println!("{}", i);
+    }
+
+    // loop
+    println!("loop");
+    loop {
+        input! {
+            x: i32,
+        }
+        if x > 0 {
+            println!("{}", x * 2);
+        } else {
+            break;
+        }
+    }
+    println!("loop with return value");
+    let value = loop {
+        input! {
+            x: i32,
+        }
+        if x > 0 {
+            println!("{}", x * 2);
+        } else {
+            break x;
+        }
+    };
+    println!("value: {}", value);
+
+    // while
+    let mut x = 15;
+    let mut v = Vec::new();
+    while x > 0 {
+        v.push(x);
+        x /= 2;
+    }
+    assert_eq!(x, 0);
+    println!("{:?}", v);
 }
