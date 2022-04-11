@@ -391,4 +391,21 @@ fn main() {
     }
     assert_eq!(x, 0);
     println!("{:?}", v);
+
+    // nested loop
+    for i in 0..4 {
+        for j in 0..i {
+            print!("({}, {})", i, j);
+        }
+        println!();
+    }
+    for i in 0..4 {
+        for j in 0..i {
+            if i * j >= 2 {
+                break;
+            }
+            print!("({}, {})", i, j);
+        }
+        println!();
+    }
 }
