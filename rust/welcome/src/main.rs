@@ -399,13 +399,30 @@ fn main() {
         }
         println!();
     }
-    for i in 0..4 {
+    'outer: for i in 0..4 {
         for j in 0..i {
             if i * j >= 2 {
-                break;
+                println!();
+                break 'outer;
             }
             print!("({}, {})", i, j);
         }
         println!();
     }
+
+    // label with return value
+    println!("---factor");
+    let factor = 'input: loop {
+        input! {
+            x: i32,
+        }
+        for i in 2.. {
+            if i * i > x {
+                break;
+            } else if x % i == 0 {
+                break 'input i;
+            }
+        }
+    };
+    println!("{}", factor);
 }
