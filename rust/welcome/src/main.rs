@@ -425,4 +425,18 @@ fn main() {
         }
     };
     println!("{}", factor);
+
+    // slice
+    // the size for values of type `[i32]` cannot be known at compilation time
+    // doesn't have a size known at compile-time
+    //let slice: [i32];
+    let ref_slice: &[i32];
+    let mut ref_slice: &[i32];
+    let array = [1, 2, 3];
+    ref_slice = &array;
+    println!("{:?}", ref_slice);
+
+    let vector = vec![4, 5, 6];
+    ref_slice = &vector;
+    println!("{:?}", ref_slice);
 }
