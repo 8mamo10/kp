@@ -439,4 +439,18 @@ fn main() {
     let vector = vec![4, 5, 6];
     ref_slice = &vector;
     println!("{:?}", ref_slice);
+
+    // ..
+    let array = [0, 10, 20, 30, 40, 50];
+    let ref_slice = &array[1..4];
+    assert_eq!(ref_slice[0], 10);
+    assert_eq!(ref_slice[1], 20);
+    assert_eq!(ref_slice[2], 30);
+
+    let empty = &array[2..2];
+    println!("{:?}", empty);
+
+    for i in &array[..] {
+        println!("{}", *i);
+    }
 }
