@@ -468,4 +468,8 @@ fn main() {
     println!("{:?}", array);
     array[1..4].reverse();
     println!("{:?}", array);
+
+    // sort
+    array.sort();
+    println!("{:?}", array);
 }
