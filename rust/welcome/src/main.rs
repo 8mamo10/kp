@@ -461,4 +461,11 @@ fn main() {
     ref_mut_slice.swap(1, 3);
     println!("{:?}", ref_mut_slice);
     println!("{:?}", array);
+
+    // reverse
+    let mut array = [7, 2, -3, 9, -2, 5];
+    array.reverse();
+    println!("{:?}", array);
+    array[1..4].reverse();
+    println!("{:?}", array);
 }
