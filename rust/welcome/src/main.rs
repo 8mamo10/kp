@@ -450,7 +450,15 @@ fn main() {
     let empty = &array[2..2];
     println!("{:?}", empty);
 
+    // for
     for i in &array[..] {
         println!("{}", *i);
     }
+
+    // swap
+    let mut array = [0, 10, 20, 30, 40];
+    let ref_mut_slice = &mut array[..];
+    ref_mut_slice.swap(1, 3);
+    println!("{:?}", ref_mut_slice);
+    println!("{:?}", array);
 }
