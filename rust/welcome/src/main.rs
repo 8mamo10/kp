@@ -486,4 +486,14 @@ fn main() {
     } else {
         println!("not matched");
     }
+
+    // multiple pattern
+    let array = [(1, 92), (3, 91), (95, 1), (94, 2)];
+    let mut vector = Vec::new();
+    for tuple in &array {
+        if let (1, value) | (value, 2) = *tuple {
+            vector.push(value);
+        }
+    }
+    println!("{:?}", vector);
 }
