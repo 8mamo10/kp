@@ -472,4 +472,18 @@ fn main() {
     // sort
     array.sort();
     println!("{:?}", array);
+
+    // if let
+    let ref_slice: &[i32] = &[10, 20, 30];
+    if let [x, y, z] = *ref_slice {
+        println!("matched: {} {} {}", x, y, z);
+    } else {
+        println!("not matched");
+    }
+    let ref_slice: &[i32] = &[10, 20];
+    if let [x, y, z] = *ref_slice {
+        println!("matched: {} {} {}", x, y, z);
+    } else {
+        println!("not matched");
+    }
 }
