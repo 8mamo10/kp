@@ -511,4 +511,12 @@ fn main() {
     } else {
         println!("not matched");
     }
+
+    // while let
+    let array = [0, 0, 0, 1, 2];
+    let mut ref_slice = &array[..];
+    while let [0, ..] = *ref_slice {
+        ref_slice = &ref_slice[1..];
+    }
+    println!("{:?}", ref_slice);
 }
