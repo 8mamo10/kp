@@ -496,4 +496,12 @@ fn main() {
         }
     }
     println!("{:?}", vector);
+
+    // range pattern
+    let tuple = (1, 2);
+    if let (0..=5, x) = tuple {
+        println!("matched: {}", x);
+    } else {
+        println!("not matched");
+    }
 }
