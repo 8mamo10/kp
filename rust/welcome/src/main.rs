@@ -504,4 +504,11 @@ fn main() {
     } else {
         println!("not matched");
     }
+
+    let tuple = (3, 1, 2);
+    if let (1, _, _) | (_, 1, _) | (_, _, 1) = tuple {
+        println!("matched");
+    } else {
+        println!("not matched");
+    }
 }
