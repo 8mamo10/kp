@@ -519,4 +519,17 @@ fn main() {
         ref_slice = &ref_slice[1..];
     }
     println!("{:?}", ref_slice);
+
+    // match
+    input! {
+        vector: [(i32, i32); 5],
+    }
+    for &tuple in &vector {
+        match tuple {
+            (1, value) => println!("{}", value),
+            (2, value) => println!("{}", value * value),
+            (0, 0) => break,
+            _ => println!("?"),
+        }
+    }
 }
