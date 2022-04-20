@@ -553,16 +553,28 @@ fn main() {
     // }
 
     // println!("---match returns value");
+    // input! {
+    //     x: i32,
+    // }
+    // let y = match x {
+    //     0 => 1,
+    //     1 => 0,
+    //     _ => {
+    //         println!("neither 0 nor 1");
+    //         0
+    //     }
+    // };
+    // println!("{}", y);
+
+    // unreachable
+    println!("---unreachable");
     input! {
         x: i32,
     }
-    let y = match x {
-        0 => 1,
-        1 => 0,
-        _ => {
-            println!("neither 0 nor 1");
-            0
-        }
+    match x % 3 {
+        0 => println!("0"),
+        1 | -1 => println!("1"),
+        2 | -2 => println!("2"),
+        _ => unreachable!(),
     };
-    println!("{}", y);
 }
