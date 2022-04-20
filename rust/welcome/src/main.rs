@@ -567,14 +567,20 @@ fn main() {
     // println!("{}", y);
 
     // unreachable
-    println!("---unreachable");
-    input! {
-        x: i32,
+    // println!("---unreachable");
+    // input! {
+    //     x: i32,
+    // }
+    // match x % 3 {
+    //     0 => println!("0"),
+    //     1 | -1 => println!("1"),
+    //     2 | -2 => println!("2"),
+    //     _ => unreachable!(),
+    // };
+
+    let tuple = (1, 3);
+    match tuple {
+        (1, x) if x % 2 == 0 => println!("{}", x),
+        _ => {}
     }
-    match x % 3 {
-        0 => println!("0"),
-        1 | -1 => println!("1"),
-        2 | -2 => println!("2"),
-        _ => unreachable!(),
-    };
 }
