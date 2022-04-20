@@ -534,20 +534,35 @@ fn main() {
     //     }
     // }
 
-    loop {
-        input! {
-            x: i32,
-        }
-        match x {
-            0 => {
-                break;
-            }
-            n => {
-                for _ in 0..n {
-                    print!("!");
-                }
-                println!();
-            }
-        }
+    // println!("---match without comma");
+    // loop {
+    //     input! {
+    //         x: i32,
+    //     }
+    //     match x {
+    //         0 => {
+    //             break;
+    //         }
+    //         n => {
+    //             for _ in 0..n {
+    //                 print!("!");
+    //             }
+    //             println!();
+    //         }
+    //     }
+    // }
+
+    // println!("---match returns value");
+    input! {
+        x: i32,
     }
+    let y = match x {
+        0 => 1,
+        1 => 0,
+        _ => {
+            println!("neither 0 nor 1");
+            0
+        }
+    };
+    println!("{}", y);
 }
