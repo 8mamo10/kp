@@ -18,45 +18,45 @@ fn main() {
     avogadro_constant = 6.02e+23;
     println!("{}", avogadro_constant);
 
-    println!("---input!");
-    input! {
-        // a: i32,
-        // b: i32,
-        // c: f64,
-        // d: f64,
-        x: i32,
-    }
-    // println!("{}", a + b);
-    // println!("{}", c * d);
+    // println!("---input!");
+    // input! {
+    //     // a: i32,
+    //     // b: i32,
+    //     // c: f64,
+    //     // d: f64,
+    //     x: i32,
+    // }
+    // // println!("{}", a + b);
+    // // println!("{}", c * d);
 
-    // if
-    if x < 10 {
-        println!("less than 10");
-    } else {
-        println!("more than or equal 10");
-    }
+    // // if
+    // if x < 10 {
+    //     println!("less than 10");
+    // } else {
+    //     println!("more than or equal 10");
+    // }
 
-    // shadowing
-    let hoge = 10;
-    println!("{}", hoge);
-    let hoge = 20;
-    println!("{}", hoge);
+    // // shadowing
+    // let hoge = 10;
+    // println!("{}", hoge);
+    // let hoge = 20;
+    // println!("{}", hoge);
 
-    // block
-    println!("before block: {}", hoge);
-    let hoge = {
-        println!("in block: {}", hoge);
-        30
-    };
-    println!("after block: {}", hoge);
-    let abs;
-    abs = if x >= 0 { x } else { -x };
-    println!("abs: {}", abs);
+    // // block
+    // println!("before block: {}", hoge);
+    // let hoge = {
+    //     println!("in block: {}", hoge);
+    //     30
+    // };
+    // println!("after block: {}", hoge);
+    // let abs;
+    // abs = if x >= 0 { x } else { -x };
+    // println!("abs: {}", abs);
 
-    //let r = x % 10;
-    let r = x.rem_euclid(10);
-    assert!(0 <= r && r < 10, "remainder must be greater or equal 0");
-    println!("remainder: {}", r);
+    // //let r = x % 10;
+    // let r = x.rem_euclid(10);
+    // assert!(0 <= r && r < 10, "remainder must be greater or equal 0");
+    // println!("remainder: {}", r);
 
     // tuple
     let tuple: (i32, f64, i32) = (10, 2.5, 20);
@@ -185,17 +185,17 @@ fn main() {
     println!("{}", fuga);
 
     // uninitialized
-    println!("---uninitialized");
-    input! {
-        input: i32,
-    }
-    //use of possibly-uninitialized `nomalized`
-    //let mut nomalized;
-    //if input >= 0 {
-    //    nomalized = 1;
-    //}
-    let normalized = if input >= 0 { 1 } else { -1 };
-    println!("{}", normalized);
+    // println!("---uninitialized");
+    // input! {
+    //     input: i32,
+    // }
+    // //use of possibly-uninitialized `nomalized`
+    // //let mut nomalized;
+    // //if input >= 0 {
+    // //    nomalized = 1;
+    // //}
+    // let normalized = if input >= 0 { 1 } else { -1 };
+    // println!("{}", normalized);
 
     let array = [30, 20, 30];
     let mut sum = 0;
@@ -315,18 +315,18 @@ fn main() {
     vector.pop();
 
     println!("{:?}", vector);
-    println!("---vector");
-    input! {
-        n: usize,
-        vector: [i32; n],
-    }
-    println!("{} {:?}", n, vector);
+    // println!("---vector");
+    // input! {
+    //     n: usize,
+    //     vector: [i32; n],
+    // }
+    // println!("{} {:?}", n, vector);
 
-    let mut sum = 0;
-    for num in &vector {
-        sum += num;
-    }
-    println!("sum: {}", sum);
+    // let mut sum = 0;
+    // for num in &vector {
+    //     sum += num;
+    // }
+    // println!("sum: {}", sum);
 
     // break
     let array = [2, 3, 0, 4, 5];
@@ -358,29 +358,29 @@ fn main() {
     }
 
     // loop
-    println!("loop");
-    loop {
-        input! {
-            x: i32,
-        }
-        if x > 0 {
-            println!("{}", x * 2);
-        } else {
-            break;
-        }
-    }
-    println!("loop with return value");
-    let value = loop {
-        input! {
-            x: i32,
-        }
-        if x > 0 {
-            println!("{}", x * 2);
-        } else {
-            break x;
-        }
-    };
-    println!("value: {}", value);
+    // println!("loop");
+    // loop {
+    //     input! {
+    //         x: i32,
+    //     }
+    //     if x > 0 {
+    //         println!("{}", x * 2);
+    //     } else {
+    //         break;
+    //     }
+    // }
+    // println!("loop with return value");
+    // let value = loop {
+    //     input! {
+    //         x: i32,
+    //     }
+    //     if x > 0 {
+    //         println!("{}", x * 2);
+    //     } else {
+    //         break x;
+    //     }
+    // };
+    // println!("value: {}", value);
 
     // while
     let mut x = 15;
@@ -411,20 +411,20 @@ fn main() {
     }
 
     // label with return value
-    println!("---factor");
-    let factor = 'input: loop {
-        input! {
-            x: i32,
-        }
-        for i in 2.. {
-            if i * i > x {
-                break;
-            } else if x % i == 0 {
-                break 'input i;
-            }
-        }
-    };
-    println!("{}", factor);
+    // println!("---factor");
+    // let factor = 'input: loop {
+    //     input! {
+    //         x: i32,
+    //     }
+    //     for i in 2.. {
+    //         if i * i > x {
+    //             break;
+    //         } else if x % i == 0 {
+    //             break 'input i;
+    //         }
+    //     }
+    // };
+    // println!("{}", factor);
 
     // slice
     // the size for values of type `[i32]` cannot be known at compilation time
@@ -521,15 +521,33 @@ fn main() {
     println!("{:?}", ref_slice);
 
     // match
-    input! {
-        vector: [(i32, i32); 5],
-    }
-    for &tuple in &vector {
-        match tuple {
-            (1, value) => println!("{}", value),
-            (2, value) => println!("{}", value * value),
-            (0, 0) => break,
-            _ => println!("?"),
+    // println!("---match");
+    // input! {
+    //     vector: [(i32, i32); 5],
+    // }
+    // for &tuple in &vector {
+    //     match tuple {
+    //         (1, value) => println!("{}", value),
+    //         (2, value) => println!("{}", value * value),
+    //         (0, 0) => break,
+    //         _ => println!("?"),
+    //     }
+    // }
+
+    loop {
+        input! {
+            x: i32,
+        }
+        match x {
+            0 => {
+                break;
+            }
+            n => {
+                for _ in 0..n {
+                    print!("!");
+                }
+                println!();
+            }
         }
     }
 }
