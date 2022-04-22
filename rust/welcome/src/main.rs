@@ -583,4 +583,15 @@ fn main() {
         (1, x) if x % 2 == 0 => println!("{}", x),
         _ => {}
     }
+
+    // string
+    let string = "Hello, world!";
+    let s: String;
+    let s = String::new();
+    let slice: &str = &s;
+    let slice = "Hello";
+    let string = "Hello".to_string();
+    let string = String::from("Hello");
+
+    println!("{}-{}-{}", string, s, slice);
 }
