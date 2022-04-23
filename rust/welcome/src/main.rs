@@ -627,4 +627,12 @@ fn main() {
     // for c in &s {
     //     println!("{}", c);
     // }
+
+    // proconio::marker::Bytes
+    input! {
+        s: proconio::marker::Bytes,
+    }
+    for c in &s {
+        println!("{}", c);
+    }
 }
