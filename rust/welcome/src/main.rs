@@ -615,4 +615,8 @@ fn main() {
     let x: i32 = 10;
     assert_eq!(x.to_string(), "10");
     assert_eq!(x.to_string(), "10".to_string());
+
+    // format!
+    let s = format!("{} {}", 10, 2.5);
+    println!("{}", s);
 }
