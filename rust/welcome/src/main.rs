@@ -594,4 +594,15 @@ fn main() {
     let string = String::from("Hello");
 
     println!("{}-{}-{}", string, s, slice);
+
+    // chars
+    let s = "Hello";
+    for c in s.chars() {
+        println!("{}", c);
+    }
+    let s: &str = "山山山";
+    let san: char = '山';
+    for c in s.chars() {
+        assert_eq!(c, san);
+    }
 }
