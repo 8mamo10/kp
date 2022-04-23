@@ -605,4 +605,10 @@ fn main() {
     for c in s.chars() {
         assert_eq!(c, san);
     }
+
+    // bytes
+    let s = "山山山";
+    for c in s.bytes() {
+        println!("{:x}", c);
+    }
 }
