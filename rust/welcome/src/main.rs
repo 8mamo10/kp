@@ -619,4 +619,12 @@ fn main() {
     // format!
     let s = format!("{} {}", 10, 2.5);
     println!("{}", s);
+
+    // proconio::marker::Chars
+    // input! {
+    //     s: proconio::marker::Chars,
+    // }
+    // for c in &s {
+    //     println!("{}", c);
+    // }
 }
