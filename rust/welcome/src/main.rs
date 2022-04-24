@@ -629,10 +629,86 @@ fn main() {
     // }
 
     // proconio::marker::Bytes
-    input! {
-        s: proconio::marker::Bytes,
+    // input! {
+    //     s: proconio::marker::Bytes,
+    // }
+    // for c in &s {
+    //     println!("{}", c);
+    // }
+
+    // copy
+    let hoge: i32 = 10;
+    let copied = hoge;
+
+    let vector: Vec<i32> = vec![1, 2, 3];
+    let moved = vector;
+    // borrow of moved value: `vector`
+    //println!("{:?}", vector);
+    println!("{:?}", moved);
+
+    let vector: Vec<i32> = vec![1, 2, 3];
+    let reference = &vector;
+    println!("{:?}", vector);
+    println!("{:?}", reference);
+
+    // cannot move
+    let vector: Vec<Vec<i32>> = vec![vec![2, 3, 4], vec![1], vec![0; 5]];
+    println!("{:?}", vector);
+    for i in &vector[0] {
+        println!("{}", i);
     }
-    for c in &s {
-        println!("{}", c);
+    for i in &vector {
+        for j in i {
+            print!("{} ", j);
+        }
+        println!();
+    }
+    // cannot move out of index of `std::vec::Vec<std::vec::Vec<i32>>`
+    //let moved = vector[0];
+
+    let vector = vec![1, 2, 3];
+    let reference = &vector;
+    // cannot move out of `vector` because it is borrowed
+    //let moved = vector;
+    println!("{:?}", reference);
+
+    // move with wildcard pattern
+    let hello = "hello".to_string();
+    let _ = hello;
+    println!("{}", hello);
+
+    // move with match
+    let tuple = (0, String::from("hello"));
+    match tuple {
+        (0, _) => {
+            println!("zero");
+        }
+        (_, s) => {
+            println!("{}", s);
+        }
+    }
+    // borrow of moved value: `tuple.1`
+    //println!("{}", tuple.1);
+
+    let tuple = (0, String::from("hello"));
+    match tuple {
+        (0, _) => {
+            println!("zero");
+        }
+        (_, ref s) => {
+            println!("{}", s);
+        }
+    }
+    println!("{}", tuple.1);
+
+    let vector = vec![
+        (vec![5, 2], 3.5),
+        (vec![1, 4, 3, 3], 2.75),
+        (vec![4, 6], 5.),
+    ];
+    // cannot move out of a shared referencerustc(E0507)
+    //for &(v, mean) in &vector {
+    for (v, mean) in &vector {
+        println!("{:?}: {}", v, mean);
     }
 }
