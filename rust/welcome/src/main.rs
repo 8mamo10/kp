@@ -711,4 +711,14 @@ fn main() {
     for (v, mean) in &vector {
         println!("{:?}: {}", v, mean);
     }
+
+    println!("{:?}", digits())
+}
+
+fn digits() -> Vec<i32> {
+    let mut v = Vec::new();
+    for i in 0..10 {
+        v.push(i);
+    }
+    v
 }
