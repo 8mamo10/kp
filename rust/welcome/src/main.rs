@@ -776,6 +776,14 @@ fn main() {
     println!("result: {}", result);
     let result = funcTrue() || funcFalse();
     println!("result: {}", result);
+
+    // recursive function
+    println!("{} {} {}", fact(0), fact(3), fact(10));
+    println!("{}", sum_slice(&[5, -1, 3, 4, 2]));
+    println!("{}", sum_slice2(&[5, -1, 3, 4, 2]));
+    let mut array = [5, -1, 3, 4, 2];
+    quick_sort(&mut array);
+    println!("{:?}", array);
 }
 
 fn digits() -> Vec<i32> {
@@ -814,4 +822,62 @@ fn funcTrue() -> bool {
 fn funcFalse() -> bool {
     println!("funcFalse");
     false
+}
+
+fn fact(n: i32) -> i32 {
+    if n == 0 {
+        1
+    } else {
+        fact(n - 1) * n
+    }
+}
+
+fn sum_slice(slice: &[i32]) -> i32 {
+    if slice.is_empty() {
+        return 0;
+    } else {
+        sum_slice(&slice[1..]) + slice[0]
+    }
+}
+
+fn sum_slice2(slice: &[i32]) -> i32 {
+    if slice.is_empty() {
+        return 0;
+    }
+    let mut total = 0;
+    dbg!(slice);
+    dbg!(slice.len());
+    for v in slice {
+        total += v
+    }
+    total
+}
+
+fn quick_sort(slice: &mut [i32]) {
+    let len = slice.len();
+    if len > 1 {
+        let pivot = slice[0];
+        let mut left = 1;
+        let mut right = len - 1;
+        loop {
+            while left < len && slice[left] <= pivot {
+                left += 1;
+            }
+            while right > 0 && slice[right] > pivot {
+                right -= 1;
+            }
+            if left == right + 1 {
+                slice.swap(0, right);
+                break;
+            } else if left < right {
+                slice.swap(left, right);
+                left += 1;
+                right -= 1;
+            } else {
+                panic!();
+            }
+        }
+        quick_sort(&mut slice[..right]);
+        quick_sort(&mut slice[left..]);
+    }
 }
