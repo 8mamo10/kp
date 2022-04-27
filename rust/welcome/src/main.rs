@@ -756,6 +756,26 @@ fn main() {
         dbg!(x);
     }
     println!("{}", x);
+
+    // operator
+    // input! {
+    //     x: i32,
+    // }
+    // if PartialEq::eq(&x, &5) {
+    //     println!("x equals 5.");
+    // } else {
+    //     println!("x does not equal 5.");
+    // }
+
+    // & &&
+    let result = funcFalse() & funcTrue();
+    println!("result: {}", result);
+    let result = funcFalse() && funcTrue();
+    println!("result: {}", result);
+    let result = funcTrue() | funcFalse();
+    println!("result: {}", result);
+    let result = funcTrue() || funcFalse();
+    println!("result: {}", result);
 }
 
 fn digits() -> Vec<i32> {
@@ -787,3 +807,11 @@ fn double(x: &mut i32) {
 
 fn fnc1(x: &i32, y: &i32) {}
 fn fnc2(x: &i32, y: &mut i32) {}
+fn funcTrue() -> bool {
+    println!("funcTrue");
+    true
+}
+fn funcFalse() -> bool {
+    println!("funcFalse");
+    false
+}
