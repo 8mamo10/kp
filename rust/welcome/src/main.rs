@@ -712,7 +712,50 @@ fn main() {
         println!("{:?}: {}", v, mean);
     }
 
-    println!("{:?}", digits())
+    println!("{:?}", digits());
+
+    // call by reference
+    let vector = vec![20, 80, 60, 40];
+    let s = sum_vector(vector);
+    println!("{}", s);
+    // borrow of moved value: `vector`
+    //println!("{:?}", vector);
+
+    let vector = vec![20, 80, 60, 40];
+    let s = sum_vector_ref(&vector);
+    println!("{}", s);
+    println!("{:?}", vector);
+
+    // variable reference
+    let mut hoge = 10;
+    double(&mut hoge);
+    println!("{}", hoge);
+    double(&mut hoge);
+    println!("{}", hoge);
+
+    // multiple reference arguments
+    fnc1(&hoge, &hoge);
+    // cannot borrow `hoge` as mutable because it is also borrowed as immutable
+    //fnc1(&hoge, &mut hoge);
+
+    // swap reference
+    // proconio::input! {
+    //     i: usize,
+    //     j: usize,
+    // }
+    // let mut array = [1, 2, 3, 4, 5];
+    // // cannot borrow `array[_]` as mutable more than once at a time
+    // //std::mem::swap(&mut array[i], &mut array[j]);
+    // array.swap(i, j);
+    // println!("{:?}", array);
+
+    // dbg!
+    let mut x = 0;
+    for i in 18..=20 {
+        x += i;
+        dbg!(x);
+    }
+    println!("{}", x);
 }
 
 fn digits() -> Vec<i32> {
@@ -722,3 +765,25 @@ fn digits() -> Vec<i32> {
     }
     v
 }
+
+fn sum_vector(v: Vec<i32>) -> i32 {
+    let mut ret = 0;
+    for &i in &v {
+        ret += i;
+    }
+    ret
+}
+fn sum_vector_ref(v: &Vec<i32>) -> i32 {
+    let mut ret = 0;
+    for &i in v {
+        ret += i;
+    }
+    ret
+}
+
+fn double(x: &mut i32) {
+    *x *= 2
+}
+
+fn fnc1(x: &i32, y: &i32) {}
+fn fnc2(x: &i32, y: &mut i32) {}
