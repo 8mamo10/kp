@@ -784,6 +784,21 @@ fn main() {
     let mut array = [5, -1, 3, 4, 2];
     quick_sort(&mut array);
     println!("{:?}", array);
+
+    // unsigned int
+    println!("{:08b}", 25_u8);
+    // signed int
+    println!("{:08b}", -25_i8);
+    println!("{:08b}", 231_u8);
+
+    println!("{:08b}", -20_i8);
+    println!("{:08b}", -70_i8);
+    println!("{:08b}", -88_i8);
+    println!("{:08b}", -2_i8);
+    println!("{:08b}", 86_i8);
+    assert_eq!(-20_i8 & -70_i8, -88_i8);
+    assert_eq!(-20_i8 | -70_i8, -2_i8);
+    assert_eq!(-20_i8 ^ -70_i8, 86_i8);
 }
 
 fn digits() -> Vec<i32> {
