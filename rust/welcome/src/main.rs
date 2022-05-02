@@ -799,6 +799,11 @@ fn main() {
     assert_eq!(-20_i8 & -70_i8, -88_i8);
     assert_eq!(-20_i8 | -70_i8, -2_i8);
     assert_eq!(-20_i8 ^ -70_i8, 86_i8);
+
+    // generics
+    assert_eq!(second_f64_i32((5., 3)), 3);
+    assert_eq!(second_f32_i32((5., 3)), 3);
+    assert_eq!(second_bool_i32((true, 3)), 3);
 }
 
 fn digits() -> Vec<i32> {
@@ -895,4 +900,16 @@ fn quick_sort(slice: &mut [i32]) {
         quick_sort(&mut slice[..right]);
         quick_sort(&mut slice[left..]);
     }
+}
+
+fn second_f64_i32(tuple: (f64, i32)) -> i32 {
+    tuple.1
+}
+
+fn second_f32_i32(tuple: (f32, i32)) -> i32 {
+    tuple.1
+}
+
+fn second_bool_i32(tuple: (bool, i32)) -> i32 {
+    tuple.1
 }
