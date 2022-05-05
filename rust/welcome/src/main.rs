@@ -807,6 +807,19 @@ fn main() {
     assert_eq!(second_any_i32((5_f64, 3)), 3);
     assert_eq!(second_any_i32((5_f32, 3)), 3);
     assert_eq!(second_any_i32((true, 3)), 3);
+
+    // trait / impl
+    print(10);
+    print("Hello");
+    //`(i32, i32)` doesn't implement `std::fmt::Display`
+    //`(i32, i32)` cannot be formatted with the default formatter
+    //help: the trait `std::fmt::Display` is not implemented for `(i32, i32)`
+    //note: in format strings you may be able to use `{:?}` (or {:#?} for pretty-print) insteadrustc(E0277)
+    //print((10_i32, 20_i32));
+    print2("Hello");
+    print3("Hello");
+    print4("Hello");
+    print_display_and_debug("Hello");
 }
 
 fn digits() -> Vec<i32> {
@@ -903,14 +916,6 @@ fn quick_sort(slice: &mut [i32]) {
         quick_sort(&mut slice[..right]);
         quick_sort(&mut slice[left..]);
     }
-
-    print(10);
-    print("Hello");
-    //`(i32, i32)` doesn't implement `std::fmt::Display`
-    //`(i32, i32)` cannot be formatted with the default formatter
-    //help: the trait `std::fmt::Display` is not implemented for `(i32, i32)`
-    //note: in format strings you may be able to use `{:?}` (or {:#?} for pretty-print) insteadrustc(E0277)
-    //print((10_i32, 20_i32));
 }
 
 fn second_f64_i32(tuple: (f64, i32)) -> i32 {
@@ -947,4 +952,28 @@ fn print_i32(x: i32) {
 
 fn print<T: std::fmt::Display>(x: T) {
     println!("{}", x);
+}
+
+fn print2(x: impl std::fmt::Display) {
+    println!("{}", x);
+}
+
+fn print3<T>(x: T)
+where
+    T: std::fmt::Display,
+{
+    println!("{}", x);
+}
+
+fn print4<T>(x: T) -> T
+where
+    T: std::fmt::Display,
+{
+    println!("{}", x);
+    x
+}
+
+fn print_display_and_debug<T: std::fmt::Display + std::fmt::Debug>(x: T) {
+    println!("{}", x);
+    println!("{:?}", x);
 }
