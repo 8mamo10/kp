@@ -801,9 +801,12 @@ fn main() {
     assert_eq!(-20_i8 ^ -70_i8, 86_i8);
 
     // generics
-    assert_eq!(second_f64_i32((5., 3)), 3);
-    assert_eq!(second_f32_i32((5., 3)), 3);
+    assert_eq!(second_f64_i32((5_f64, 3)), 3);
+    assert_eq!(second_f32_i32((5_f32, 3)), 3);
     assert_eq!(second_bool_i32((true, 3)), 3);
+    assert_eq!(second_any_i32((5_f64, 3)), 3);
+    assert_eq!(second_any_i32((5_f32, 3)), 3);
+    assert_eq!(second_any_i32((true, 3)), 3);
 }
 
 fn digits() -> Vec<i32> {
@@ -900,6 +903,14 @@ fn quick_sort(slice: &mut [i32]) {
         quick_sort(&mut slice[..right]);
         quick_sort(&mut slice[left..]);
     }
+
+    print(10);
+    print("Hello");
+    //`(i32, i32)` doesn't implement `std::fmt::Display`
+    //`(i32, i32)` cannot be formatted with the default formatter
+    //help: the trait `std::fmt::Display` is not implemented for `(i32, i32)`
+    //note: in format strings you may be able to use `{:?}` (or {:#?} for pretty-print) insteadrustc(E0277)
+    //print((10_i32, 20_i32));
 }
 
 fn second_f64_i32(tuple: (f64, i32)) -> i32 {
@@ -912,4 +923,28 @@ fn second_f32_i32(tuple: (f32, i32)) -> i32 {
 
 fn second_bool_i32(tuple: (bool, i32)) -> i32 {
     tuple.1
+}
+
+fn second_any_i32<T>(tuple: (T, i32)) -> i32 {
+    tuple.1
+}
+
+fn second<T, U>(tuple: (T, U)) -> U {
+    let first: T = tuple.0;
+    let second: U = tuple.1;
+    second
+}
+
+fn print_i32(x: i32) {
+    println!("{}", x);
+}
+
+// `T` doesn't implement `std::fmt::Display`
+// `T` cannot be formatted with the default formatter
+// fn print<T>(x: T) {
+//     println!("{}", x);
+//}
+
+fn print<T: std::fmt::Display>(x: T) {
+    println!("{}", x);
 }
