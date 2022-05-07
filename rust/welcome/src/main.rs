@@ -820,6 +820,20 @@ fn main() {
     print3("Hello");
     print4("Hello");
     print_display_and_debug("Hello");
+
+    // function returns ref
+    //let vec = vec![2, 4, 7, 8, 6, 3, 5, 7, 9, 20];
+    //let vec = vec![1, 2, 3, 4, 5];
+    let vec = vec![10];
+    let slice = &vec[..];
+    let mut increasing = slice;
+    for i in 0..slice.len() - 1 {
+        if slice[i] >= slice[i + 1] {
+            increasing = &slice[..=i];
+            break;
+        }
+    }
+    println!("{:?}", increasing);
 }
 
 fn digits() -> Vec<i32> {
