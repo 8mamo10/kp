@@ -826,14 +826,40 @@ fn main() {
     //let vec = vec![1, 2, 3, 4, 5];
     let vec = vec![10];
     let slice = &vec[..];
-    let mut increasing = slice;
+    let mut inc = slice;
     for i in 0..slice.len() - 1 {
         if slice[i] >= slice[i + 1] {
-            increasing = &slice[..=i];
+            inc = &slice[..=i];
             break;
         }
     }
-    println!("{:?}", increasing);
+    println!("{:?}", inc);
+
+    let vec = vec![2, 4, 7, 8, 6, 3, 5];
+    let result = increasing(&vec);
+    println!("{:?}", result);
+
+    // `vec` does not live long enough
+    // let result;
+    // {
+    //     let vec = vec![2, 4, 7, 8, 6, 3, 5];
+    //     result = increasing(&vec);
+    // }
+    // println!("{:?}", result);
+
+    let mut vec1 = vec![10, 20, 30, 40];
+    let vec2 = vec![5, 6, 7];
+    add(&mut vec1[..], &vec2);
+    println!("vec1: {:?}", vec1);
+    println!("vec2: {:?}", vec2);
+
+    let four = vec![1, 2, 3, 4];
+    let result;
+    {
+        let three = vec![1, 2, 3];
+        result = longer(&four, &three);
+        println!("{:?}", result);
+    }
 }
 
 fn digits() -> Vec<i32> {
@@ -990,4 +1016,40 @@ where
 fn print_display_and_debug<T: std::fmt::Display + std::fmt::Debug>(x: T) {
     println!("{}", x);
     println!("{:?}", x);
+}
+
+fn increasing<'a>(slice: &'a [i32]) -> &'a [i32] {
+    let mut ret: &'a [i32] = slice;
+    for i in 0..slice.len() - 1 {
+        if slice[i] >= slice[i + 1] {
+            ret = &slice[..=i];
+            break;
+        }
+    }
+    ret
+}
+
+//`x` has an anonymous lifetime `'_` but it needs to satisfy a `'static` lifetime requirementrustc(E0759)
+// fn add(x: &mut [i32], y: &[i32]) -> &[i32] {
+//     let len = x.len().min(y.len());
+//     for i in 0..len {
+//         x[i] += y[i];
+//     }
+//     &x[0..len]
+// }
+
+fn add<'a>(x: &'a mut [i32], y: &[i32]) -> &'a [i32] {
+    let len = x.len().min(y.len());
+    for i in 0..len {
+        x[i] += y[i];
+    }
+    &x[0..len]
+}
+
+fn longer<'a>(x: &'a [i32], y: &'a [i32]) -> &'a [i32] {
+    if x.len() > y.len() {
+        x
+    } else {
+        y
+    }
 }
