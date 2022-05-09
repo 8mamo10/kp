@@ -860,6 +860,17 @@ fn main() {
         result = longer(&four, &three);
         println!("{:?}", result);
     }
+
+    // omit lifetime
+    let (former, latter) = split_mid(&[3, 1, 4, 1, 5, 2, 7]);
+    println!("{:?}", former);
+    println!("{:?}", latter);
+
+    // static lifetime
+    println!("{}", ordinal_suffix(1));
+    println!("{}", ordinal_suffix(22));
+    println!("{}", ordinal_suffix(333));
+    println!("{}", ordinal_suffix(444));
 }
 
 fn digits() -> Vec<i32> {
@@ -1051,5 +1062,20 @@ fn longer<'a>(x: &'a [i32], y: &'a [i32]) -> &'a [i32] {
         x
     } else {
         y
+    }
+}
+
+fn split_mid(slice: &[i32]) -> (&[i32], &[i32]) {
+    let mid = slice.len() / 2;
+    (&slice[..mid], &slice[mid..])
+}
+
+fn ordinal_suffix(number: u32) -> &'static str {
+    match (number % 10, number % 100) {
+        (_, 11..=13) => "th",
+        (1, _) => "st",
+        (2, _) => "nd",
+        (3, _) => "rd",
+        _ => "th",
     }
 }
