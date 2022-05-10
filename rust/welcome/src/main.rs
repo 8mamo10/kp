@@ -871,6 +871,15 @@ fn main() {
     println!("{}", ordinal_suffix(22));
     println!("{}", ordinal_suffix(333));
     println!("{}", ordinal_suffix(444));
+
+    // struct
+    let point: Point;
+    //mismatched types
+    //expected struct `Point`, found tuple
+    //point = (2_i32, 3_i32);
+    point = Point(2_i32, 3_i32);
+    println!("{}", point.0);
+    println!("{}", point.1);
 }
 
 fn digits() -> Vec<i32> {
@@ -1079,3 +1088,5 @@ fn ordinal_suffix(number: u32) -> &'static str {
         _ => "th",
     }
 }
+
+struct Point(i32, i32);
