@@ -890,6 +890,12 @@ fn main() {
         weight: w,
     } = david;
     println!("{} {}", h, w);
+
+    let Physical {
+        height: _,
+        weight: w,
+    } = david;
+    let Physical { weight: w, .. } = david;
 }
 
 fn digits() -> Vec<i32> {
