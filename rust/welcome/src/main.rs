@@ -880,6 +880,16 @@ fn main() {
     point = Point(2_i32, 3_i32);
     println!("{}", point.0);
     println!("{}", point.1);
+
+    let david = Physical {
+        height: 170,
+        weight: 50,
+    };
+    let Physical {
+        height: h,
+        weight: w,
+    } = david;
+    println!("{} {}", h, w);
 }
 
 fn digits() -> Vec<i32> {
@@ -1090,3 +1100,7 @@ fn ordinal_suffix(number: u32) -> &'static str {
 }
 
 struct Point(i32, i32);
+struct Physical {
+    height: i32,
+    weight: i32,
+}
