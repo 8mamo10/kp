@@ -896,6 +896,32 @@ fn main() {
         weight: w,
     } = david;
     let Physical { weight: w, .. } = david;
+
+    // enum
+    let shape1: Shape = Shape::Triangle(1.5, 2., 2.5);
+    let shape2: Shape = Shape::Rectangle {
+        height: 1.,
+        width: 2.5,
+    };
+    let shape3: Shape = Shape::Circle { radius: 2. };
+
+    if let Shape::Triangle(_, _, _) = shape1 {
+        println!("yes");
+    } else {
+        println!("no");
+    }
+    match shape1 {
+        Shape::Triangle(_, _, _) => println!("yes"),
+        _ => println!("no"),
+    }
+    if matches!(shape1, Shape::Triangle(_, _, _)) {
+        println!("yes");
+    } else {
+        println!("no");
+    }
+    println!("{}", area(&shape1));
+    println!("{}", area(&shape2));
+    println!("{}", area(&shape3));
 }
 
 fn digits() -> Vec<i32> {
@@ -1109,4 +1135,25 @@ struct Point(i32, i32);
 struct Physical {
     height: i32,
     weight: i32,
+}
+
+enum Shape {
+    Triangle(f64, f64, f64),
+    Rectangle { height: f64, width: f64 },
+    Circle { radius: f64 },
+}
+
+fn area(shape: &Shape) -> f64 {
+    match *shape {
+        Shape::Triangle(a, b, c) => {
+            let s = (a + b + c) / 2.;
+            let squred = s * (s - a) * (s - b) * (s - c);
+            squred.sqrt()
+        }
+        Shape::Rectangle {
+            height: h,
+            width: w,
+        } => h * w,
+        Shape::Circle { radius: r } => r * r * std::f64::consts::PI,
+    }
 }
