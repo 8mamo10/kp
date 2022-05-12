@@ -922,6 +922,19 @@ fn main() {
     println!("{}", area(&shape1));
     println!("{}", area(&shape2));
     println!("{}", area(&shape3));
+
+    // method
+    let v = Vector(1., 1.);
+    //let r = Vector::length(&v);
+    let r = v.length();
+    println!("{}", r);
+    let i = Vector::inverse(&v);
+    println!("{} {}", i.0, i.1);
+    let v = Vector(1., 2.);
+    let tuple = v.into_tuple();
+    //borrow of moved value: `v`
+    //value borrowed here after moverustc(E0382)
+    //println!("{}", v.0);
 }
 
 fn digits() -> Vec<i32> {
@@ -1155,5 +1168,32 @@ fn area(shape: &Shape) -> f64 {
             width: w,
         } => h * w,
         Shape::Circle { radius: r } => r * r * std::f64::consts::PI,
+    }
+}
+
+struct Vector(f64, f64);
+
+// fn length(vector: &Vector) -> f64 {
+//     let Vector(x, y) = *vector;
+//     (x * x + y * y).sqrt()
+// }
+
+impl Vector {
+    // fn length(vector: &Vector) -> f64 {
+    //     let Vector(x, y) = *vector;
+    //     (x * x + y * y).sqrt()
+    // }
+    fn length(self: &Vector) -> f64 {
+        let Vector(x, y) = *self;
+        (x * x + y * y).sqrt()
+    }
+    fn inverse(vector: &Vector) -> Vector {
+        Vector(-vector.0, -vector.1)
+    }
+    fn into_tuple(self) -> (f64, f64) {
+        (self.0, self.1)
+    }
+    fn zero() -> Vector {
+        Vector(0., 0.)
     }
 }
