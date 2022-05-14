@@ -942,6 +942,14 @@ fn main() {
     let p: PointG<_> = p1;
     println!("{}", p.abscissa());
     println!("{}", p2.abscissa());
+    // option
+    let x = Some(10);
+    let y = None;
+    let z: i32 = match y {
+        Some(i) => i,
+        None => -1,
+    };
+    println!("{}", z);
 }
 
 fn digits() -> Vec<i32> {
