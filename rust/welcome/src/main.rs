@@ -935,6 +935,13 @@ fn main() {
     //borrow of moved value: `v`
     //value borrowed here after moverustc(E0382)
     //println!("{}", v.0);
+
+    // generics struct
+    let p1: PointG<i32> = PointG::<i32>(1, 5);
+    let p2: PointG<f64> = PointG::<f64>(1.2, 5.2);
+    let p: PointG<_> = p1;
+    println!("{}", p.abscissa());
+    println!("{}", p2.abscissa());
 }
 
 fn digits() -> Vec<i32> {
@@ -1195,5 +1202,15 @@ impl Vector {
     }
     fn zero() -> Vector {
         Vector(0., 0.)
+    }
+}
+
+struct PointI32(i32, i32);
+struct PointF64(f64, f64);
+struct PointG<T>(T, T);
+
+impl<T> PointG<T> {
+    fn abscissa(&self) -> &T {
+        &self.0
     }
 }
