@@ -950,6 +950,12 @@ fn main() {
         None => -1,
     };
     println!("{}", z);
+
+    // Result
+    let result = "120".parse();
+    assert!(matches!(result, Ok(120)));
+    assert!(result.is_ok());
+    assert_eq!(result.unwrap(), 120);
 }
 
 fn digits() -> Vec<i32> {
