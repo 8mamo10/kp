@@ -942,6 +942,7 @@ fn main() {
     let p: PointG<_> = p1;
     println!("{}", p.abscissa());
     println!("{}", p2.abscissa());
+
     // option
     let x = Some(10);
     let y = None;
@@ -951,11 +952,19 @@ fn main() {
     };
     println!("{}", z);
 
-    // Result
+    // result
     let result = "120".parse();
     assert!(matches!(result, Ok(120)));
     assert!(result.is_ok());
-    assert_eq!(result.unwrap(), 120);
+    println!("{}", result.unwrap());
+
+    let result = "xxx".parse();
+    assert!(matches!(result, Err(_)));
+    assert!(result.is_err());
+    if let Err(ref err) = result {
+        eprintln!("{}", err);
+    }
+    println!("{}", result.unwrap_or(-1));
 }
 
 fn digits() -> Vec<i32> {
