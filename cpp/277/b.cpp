@@ -3,7 +3,7 @@ using namespace std;
 
 bool having(string target, vector<string> list)
 {
-  for (int i = 0; i < (int)list.size(); i++)
+  for (size_t i = 0; i < list.size(); i++)
   {
     if (list[i] == target)
     {
@@ -30,23 +30,30 @@ int main()
   {
     string str = s[i];
     string first = str.substr(0, 1);
+    // cout << "first:" << first << endl;
     string second = str.substr(1, 1);
+    // cout << "second:" << second << endl;
     if (!having(first, marks))
     {
       cout << "No" << endl;
-      return -1;
+      return 0;
     }
     if (!having(second, numbers))
     {
       cout << "No" << endl;
-      return -1;
+      return 0;
     }
     if (having(str, logs))
     {
       cout << "No" << endl;
-      return -1;
+      return 0;
     }
     logs.push_back(str);
+    // for (int j = 0; j < logs.size(); j++)
+    // {
+    //   cout << logs[j] << ",";
+    // }
+    // cout << endl;
   }
   cout << "Yes" << endl;
   return 0;
