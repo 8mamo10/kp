@@ -13,6 +13,15 @@ bool having(string target, vector<string> list)
   return false;
 }
 
+void print_vector(vector<string> v)
+{
+  for (int i = 0; i < v.size(); i++)
+  {
+    cout << v[i] << ",";
+  }
+  cout << endl;
+}
+
 int main()
 {
   int n;
@@ -49,11 +58,7 @@ int main()
       return 0;
     }
     logs.push_back(str);
-    // for (int j = 0; j < logs.size(); j++)
-    // {
-    //   cout << logs[j] << ",";
-    // }
-    // cout << endl;
+    // print_vector(logs);
   }
   cout << "Yes" << endl;
   return 0;
