@@ -12,3 +12,7 @@ rustc 1.59.0 (9d1b2106e 2022-02-23)
 ]$ cargo --version
 cargo 1.59.0 (49d8809dc 2022-02-10)
 ```
+
+```
+$ g++ b.cpp -Wall -I../ac-library
+```
