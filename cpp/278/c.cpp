@@ -3,7 +3,7 @@ using namespace std;
 #include <atcoder/all>
 using namespace atcoder;
 
-struct operation
+struct op
 {
   int t;
   int a;
@@ -14,41 +14,29 @@ int main()
 {
   int n, q;
   cin >> n >> q;
-  vector<operation> v;
+  vector<op> v(q);
   for (int i = 0; i < q; i++)
   {
-    operation op{};
-    cin >> op.t >> op.a >> op.b;
-    v.push_back(op);
+    int t, a, b;
+    cin >> t >> a >> b;
+    v[i] = op{t, a, b};
   }
-  vector<vector<int>> f(n + 1);
-  int t, a, b;
+
+  set<pair<int, int>> st;
   for (int i = 0; i < q; i++)
   {
-    t = v[i].t;
-    a = v[i].a;
-    b = v[i].b;
-
-    vector<int>::iterator itr;
-    bool ab, ba;
-    switch (t)
+    op p = v[i];
+    if (p.t == 1)
     {
-    case 1:
-      ab = (find(f[a].begin(), f[a].end(), b) != f[a].end());
-      if (ab)
-      {
-        break;
-      }
-      f[a].push_back(b);
-      break;
-    case 2:
-      itr = remove(begin(f[a]), end(f[a]), b);
-      f[a].erase(itr, cend(f[a]));
-      break;
-    case 3:
-      ab = (find(f[a].begin(), f[a].end(), b) != f[a].end());
-      ba = (find(f[b].begin(), f[b].end(), a) != f[b].end());
-      if (ab && ba)
+      st.insert(pair(p.a, p.b));
+    }
+    if (p.t == 2)
+    {
+      st.erase(pair(p.a, p.b));
+    }
+    if (p.t == 3)
+    {
+      if (st.count(pair(p.a, p.b)) && st.count(pair(p.b, p.a)))
       {
         cout << "Yes" << endl;
       }
@@ -56,9 +44,7 @@ int main()
       {
         cout << "No" << endl;
       }
-      break;
     }
   }
-
   return 0;
 }
