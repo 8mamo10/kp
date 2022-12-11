@@ -14,5 +14,5 @@ cargo 1.59.0 (49d8809dc 2022-02-10)
 ```
 
 ```
-$ g++ b.cpp -Wall -I../ac-library
+$ g++ a.cpp -Wall -I../ac-library
 ```
