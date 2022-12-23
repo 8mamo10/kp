@@ -7,27 +7,34 @@ int main()
 {
   int h, w;
   cin >> h >> w;
-  vector<string> s, t;
-  for (int i = 0; i < h; i++)
+  vector<string> s(h), t(h);
+  for (auto &it : s)
   {
-    string ss;
-    cin >> ss;
-    s.push_back(ss);
+    cin >> it;
   }
-  for (int i = 0; i < h; i++)
+  for (auto &it : t)
   {
-    string tt;
-    cin >> tt;
-    t.push_back(tt);
+    cin >> it;
   }
+
+  vector<string> ss(w), tt(w);
   for (int i = 0; i < h; i++)
   {
-    string ss = s[i];
-    sort(ss.begin(), ss.end());
-    string tt = t[i];
-    sort(tt.begin(), tt.end());
-    // cout << ss << ":" << tt << endl;
-    if (ss != tt)
+    string sss = s[i];
+    string ttt = t[i];
+    for (int j = 0; j < w; j++)
+    {
+      ss[j].push_back(sss[j]);
+      tt[j].push_back(ttt[j]);
+    }
+  }
+
+  sort(ss.begin(), ss.end());
+  sort(tt.begin(), tt.end());
+
+  for (int i = 0; i < w; i++)
+  {
+    if (ss[i] != tt[i])
     {
       cout << "No" << endl;
       return 0;
