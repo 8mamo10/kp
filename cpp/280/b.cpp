@@ -12,13 +12,17 @@ int main()
   {
     cin >> it;
   }
-
-  vector<ll> a(n);
-  ll total = 0;
   for (int i = 0; i < n; i++)
   {
-    total += s[i];
+    if (i == 0)
+    {
+      cout << s[i] << " ";
+    }
+    else
+    {
+      cout << s[i] - s[i - 1] << " ";
+    }
   }
-  cout << total << endl;
+  cout << endl;
   return 0;
 }
