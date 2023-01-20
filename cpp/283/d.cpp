@@ -16,7 +16,7 @@ int main()
   string s;
   cin >> s;
   set<char> box;
-  vector<int> v;
+  vector<set<char>> v;
 
   for (size_t i = 0; i < s.length(); i++)
   {
@@ -27,20 +27,16 @@ int main()
 
     if (s[i] == '(')
     {
-      v.push_back(i);
+      set<char> x;
+      v.push_back(x);
       continue;
     }
     if (s[i] == ')')
     {
-      int j = v[v.size() - 1];
-      int length = i - j;
-      if (length > 1)
+      set<char> b = v[v.size() - 1];
+      for (auto itr = b.begin(); itr != b.end(); itr++)
       {
-        string sub = s.substr(j + 1, length);
-        for (size_t x = 0; x < sub.length(); x++)
-        {
-          box.erase(sub[x]);
-        }
+        box.erase(*itr);
       }
       v.pop_back();
       continue;
@@ -53,6 +49,11 @@ int main()
     else
     {
       box.insert(s[i]);
+      if (v.empty())
+      {
+        continue;
+      }
+      v[v.size() - 1].insert(s[i]);
     }
   }
   cout << "Yes" << endl;
