@@ -19,14 +19,6 @@ int main()
     }
     v.push_back(vv);
   }
-  // for (auto itr : v)
-  // {
-  //   for (auto itr2 : itr)
-  //   {
-  //     cout << itr2 << " ";
-  //   }
-  //   cout << endl;
-  // }
 
   return 0;
 }
