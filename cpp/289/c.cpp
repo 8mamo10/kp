@@ -19,6 +19,22 @@ int main()
     }
     v.push_back(vv);
   }
-
+  int ans = 0;
+  for (int b = 0; b < (1 << M); b++)
+  {
+    set<int> s;
+    for (int i = 0; i < M; i++)
+    {
+      if ((b >> i) & 1)
+      {
+        for (auto x : v[i])
+        {
+          s.insert(x);
+        }
+      }
+    }
+    ans += ((int)s.size() == N);
+  }
+  cout << ans << endl;
   return 0;
 }
