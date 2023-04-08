@@ -6,31 +6,34 @@ int main()
   int N;
   cin >> N;
 
-  int ab;
-  if (N % 2 == 1)
+  long long ans = 0;
+
+  for (int i = 1; i < N; i++)
   {
-    ab = N / 2 + 1;
-  }
-  else
-  {
-    ab = N / 2;
+    int X = i, Y = N - i;
+    long long x = 0, y = 0;
+    for (int j = 1; j * j <= X; j++)
+    {
+      if (X % j == 0)
+      {
+        x++;
+        if (X != j * j)
+          x++;
+      }
+    }
+    for (int j = 1; j * j <= Y; j++)
+    {
+      if (Y % j == 0)
+      {
+        y++;
+        if (Y != j * j)
+          y++;
+      }
+    }
+    ans += x * y;
   }
 
-  long long count = 0;
-  for (int i = 1; i <= ab; i++)
-  {
-    int a, b = 0;
-    if (ab % i == 0)
-    {
-      a = i;
-      b = ab / a;
-      count++;
-    }
-    if (a != b)
-    {
-      count++;
-    }
-  }
-  cout << count * 2 << endl;
+  cout << ans << endl;
+
   return 0;
 }
