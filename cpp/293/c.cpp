@@ -4,7 +4,7 @@ using namespace std;
 int main()
 {
   int H, W;
-  ciin >> H >> W;
+  cin >> H >> W;
   vector<vector<int>> V;
   for (int i = 0; i < H; i++)
   {
@@ -15,5 +15,6 @@ int main()
       V[i][j] = A;
     }
   }
+
   return 0;
 }
