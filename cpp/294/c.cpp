@@ -15,35 +15,10 @@ int main()
   {
     cin >> B[i];
   }
-  // vector<int> C;
-  // for (auto itr : A)
-  // {
-  //   C.push_back(itr);
-  // }
-  // for (auto itr : B)
-  // {
-  //   C.push_back(itr);
-  // }
-  // sort(C.begin(), C.end());
-  // for (auto itr : C)
-  // {
-  //   cout << itr << " ";
-  // }
-  // cout << endl;
+
   vector<int> ans_a;
   vector<int> ans_b;
-  // for (int i = 0; i < N + M; i++)
-  // {
-  //   int val = C[i];
-  //   if (find(A.begin(), A.end(), val) != A.end())
-  //   {
-  //     ans_a.push_back(i + 1);
-  //   }
-  //   else
-  //   {
-  //     ans_b.push_back(i + 1);
-  //   }
-  // }
+
   int index = 0;
   while (index < N + M)
   {
