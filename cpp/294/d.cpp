@@ -5,12 +5,8 @@ int main()
 {
   int N, Q;
   cin >> N >> Q;
-  set<int> wait;
-  for (int i = 0; i < N; i++)
-  {
-    wait.insert(i + 1);
-  }
 
+  int last = 0;
   set<int> called;
   for (int i = 0; i < Q; i++)
   {
@@ -18,8 +14,7 @@ int main()
     cin >> type;
     if (type == 1)
     {
-      called.insert(*wait.begin());
-      wait.erase(wait.begin());
+      called.insert(++last);
     }
     else if (type == 2)
     {
@@ -30,7 +25,6 @@ int main()
     else if (type == 3)
     {
       cout << *called.begin() << endl;
-      called.erase(called.begin());
     }
   }
   return 0;
