@@ -5,18 +5,17 @@ int main()
 {
   int N, X;
   cin >> N >> X;
-  vector<int> A(N);
+  set<int> A;
   for (int i = 0; i < N; i++)
   {
-    cin >> A[i];
+    int v;
+    cin >> v;
+    A.insert(v);
   }
 
-  set<int> logs;
   for (auto itr : A)
   {
-    int added = itr + X;
-    logs.insert(added);
-    if (logs.find(itr) != logs.end())
+    if (A.find(itr + X) != A.end())
     {
       cout << "Yes" << endl;
       return 0;
