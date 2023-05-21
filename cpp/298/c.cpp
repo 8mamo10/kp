@@ -9,7 +9,7 @@ int main()
   int N, Q;
   cin >> N >> Q;
 
-  map<int, vector<int>> box;
+  map<int, map<int, int>> box;
   map<int, set<int>> number;
 
   for (int _ = 0; _ < Q; _++)
@@ -20,17 +20,19 @@ int main()
     if (type == 1)
     {
       cin >> i >> j;
-      box[j].push_back(i);
-      sort(box[j].begin(), box[j].end());
+      box[j][i]++;
       number[i].insert(j);
     }
     else if (type == 2)
     {
       cin >> i;
-
-      for (auto itr : box[i])
+      for (auto b : box[i])
       {
-        cout << itr << " ";
+        int count = b.second;
+        for (int c = 0; c < count; c++)
+        {
+          cout << b.first << " ";
+        }
       }
       cout << endl;
     }
