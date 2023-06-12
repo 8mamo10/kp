@@ -14,8 +14,8 @@ int main()
 
   string S;
   cin >> S;
-  ll N;
-  cin >> N;
+  // ll N;
+  // cin >> N;
 
   ll ans = 0;
   for (size_t i = 0; i < S.length(); i++)
@@ -26,5 +26,14 @@ int main()
     }
   }
   cout << ans << endl;
+
+  int decimal = 0;
+  for (auto ch : S)
+  {
+    decimal = (decimal << 1) | (ch - '0');
+  }
+  cout << decimal << endl;
+  cout << (decimal << 1) << endl;
+  cout << (decimal << 2) << endl;
   return 0;
 }
