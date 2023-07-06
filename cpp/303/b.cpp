@@ -44,15 +44,21 @@ int main()
     }
   }
 
+  // for (auto itr : neighbor)
+  // {
+  //   cout << itr.first << ":";
+  //   for (auto itr2 : itr.second)
+  //   {
+  //     cout << itr2 << ",";
+  //   }
+  //   cout << endl;
+  // }
+
+  int count = 0;
   for (auto itr : neighbor)
   {
-    cout << itr.first << ":";
-    for (auto itr2 : itr.second)
-    {
-      cout << itr2 << ",";
-    }
-    cout << endl;
+    count += N - itr.second.size() - 1;
   }
-
+  cout << count / 2 << endl;
   return 0;
 }
