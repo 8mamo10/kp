@@ -12,13 +12,43 @@ int main()
 {
   int N, D;
   cin >> N >> D;
-  set<pair<int, int>> st;
+  vector<int> X(N), Y(N);
   for (int i = 0; i < N; i++)
   {
-    int X, Y;
-    cin >> X >> Y;
-    st.insert({X, Y});
+    cin >> X[i] >> Y[i];
   }
 
+  vector<vector<bool>> graph(N, vector<bool>(N));
+  for (int i = 0; i < N; i++)
+  {
+    for (int j = 0; j < N; j++)
+    {
+      if ((X[i] - X[j]) * (X[i] - X[j]) + (Y[i] - Y[j]) * (Y[i] - Y[j]) <= D * D)
+      {
+        graph[i][j] = true;
+      }
+    }
+  }
+  vector<bool> ans(N);
+  ans[0] = true;
+  queue<int> que;
+  que.push(0);
+  while (!que.empty())
+  {
+    int q = que.front();
+    que.pop();
+    for (int i = 0; i < N; i++)
+    {
+      if (graph[q][i] && !ans[i])
+      {
+        que.push(i);
+        ans[i] = true;
+      }
+    }
+  }
+  for (int i = 0; i < N; i++)
+  {
+    cout << (ans[i] ? "Yes" : "No") << endl;
+  }
   return 0;
 }
