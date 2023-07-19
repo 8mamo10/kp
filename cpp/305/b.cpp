@@ -30,8 +30,8 @@ int main()
   // printf("%d\n", 'A');
   // printf("%d\n", 'F');
 
-  int start = P - 65;
-  int end = Q - 65;
+  int start = P - 'A';
+  int end = Q - 'A';
 
   if (start > end)
   {
