@@ -17,57 +17,21 @@ int main()
   {
     cin >> S[i];
   }
-  int top = H, bottom = H - 1;
+
+  int top = H, bottom = 0, left = W, right = 0;
   for (int i = 0; i < H; i++)
   {
-    if (S[i].find('#') != string::npos)
+    for (int j = 0; j < W; j++)
     {
-      if (top == H)
+      if (S[i][j] == '#')
       {
-        top = i;
-      }
-    }
-    else
-    {
-      if (top != H)
-      {
-        bottom = i - 1;
+        top = min(top, i);
+        bottom = max(bottom, i);
+        left = min(left, j);
+        right = max(right, j);
       }
     }
   }
-  // cout << "top:" << top << endl;
-  // cout << "bottom:" << bottom << endl;
-
-  int num = W;
-  int valid_line = 0;
-  int invalid_line = 0;
-  for (int i = top; i <= bottom; i++)
-  {
-    int count = 0;
-    for (size_t j = 0; (j = S[i].find('#', j)) != string::npos; j++)
-    {
-      count++;
-    }
-    if (count < num)
-    {
-      num = count;
-      invalid_line = i;
-    }
-    else
-    {
-      valid_line = i;
-    }
-    // cout << i << ":" << count << endl;
-  }
-
-  for (int i = 0; i < W; i++)
-  {
-    if (S[valid_line][i] != S[invalid_line][i])
-    {
-      cout << invalid_line + 1 << " " << i + 1 << endl;
-      return 0;
-    }
-  }
-
+  // printf("%d:%d:%d:%d\n", top, bottom, left, right);
   return 0;
 }
