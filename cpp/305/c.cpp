@@ -33,5 +33,17 @@ int main()
     }
   }
   // printf("%d:%d:%d:%d\n", top, bottom, left, right);
+
+  for (int i = top; i <= bottom; i++)
+  {
+    for (int j = left; j <= right; j++)
+    {
+      if (S[i][j] == '.')
+      {
+        cout << i + 1 << " " << j + 1 << endl;
+        return 0;
+      }
+    }
+  }
   return 0;
 }
