@@ -13,20 +13,22 @@ int main()
 {
   int N;
   cin >> N;
-  vector<int> vec(N + 1, INT_MAX);
-  set<int> s;
+  vector<int> vec(N * 3 + 1, 0);
+  set<int> s1;
+  set<int> s2;
 
   for (int i = 0; i < N * 3; i++)
   {
     int A;
     cin >> A;
-    if (s.find(A) == s.end())
+    if (s1.find(A) == s1.end())
     {
-      s.insert(A);
+      s1.insert(A);
     }
-    else if (vec[A] == INT_MAX)
+    else if (s2.find(A) == s2.end())
     {
-      vec[A] = i + 1;
+      vec[i] = A;
+      s2.insert(A);
     }
     else
     {
@@ -39,12 +41,13 @@ int main()
     // printf("%lu:%d\n", i, vec[i]);
   }
 
-  for (int i = 0; i < N; i++)
+  for (auto itr : vec)
   {
-    auto itr = min_element(vec.begin(), vec.end());
-    size_t index = distance(vec.begin(), itr);
-    cout << index << " ";
-    vec[index] = INT_MAX;
+    if (itr == 0)
+    {
+      continue;
+    }
+    cout << itr << " ";
   }
   cout << endl;
   return 0;
