@@ -13,12 +13,12 @@ int main()
 {
   int N;
   cin >> N;
-  map<double, vector<int>, std::greater<double>> results;
+  map<long double, vector<int>, std::greater<long double>> results;
   for (int i = 0; i < N; i++)
   {
-    double A, B;
+    long double A, B;
     cin >> A >> B;
-    double d = A / (A + B);
+    long double d = A / (A + B);
     // cout << d << endl;
     results[d].push_back(i + 1);
   }
