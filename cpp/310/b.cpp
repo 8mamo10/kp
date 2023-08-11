@@ -65,7 +65,7 @@ int main()
       {
         if (find(fun_i.begin(), fun_i.end(), fun_j[l]) == fun_i.end())
         {
-          cout << i << ":" << j << endl;
+          // cout << i << ":" << j << endl;
           cout << "Yes" << endl;
           return 0;
         }
