@@ -14,45 +14,34 @@ int main()
   int N;
   cin >> N;
   vector<int> A(N + 1);
-  for (int i = 1; i < N + 1; i++)
+  for (int i = 1; i <= N; i++)
   {
     cin >> A[i];
   }
 
-  for (int i = 1; i < N + 1; i++)
+  vector<int> visited(N + 1, false), path;
+  int next = 1;
+  while (!visited[next])
   {
-    vector<int> path;
-    queue<int> q;
-    vector<bool> visited(N + 1, false);
-
-    path.push_back(i);
-    q.push(A[i]);
-    visited[i] = true;
-
-    while (!q.empty())
-    {
-      int next = q.front();
-      q.pop();
-      if (next == i)
-      {
-        for (auto itr : path)
-        {
-          cout << itr << " ";
-        }
-        cout << endl;
-        return 0;
-      }
-      if (visited[next] == true)
-      {
-        break;
-      }
-      else
-      {
-        path.push_back(next);
-        q.push(A[next]);
-        visited[next] = true;
-      }
-    }
+    visited[next] = true;
+    path.push_back(next);
+    next = A[next];
   }
+
+  // B[1] = A[B[M]]
+  auto start = find(path.begin(), path.end(), next);
+  vector<int> res;
+  for (auto itr = start; itr != path.end(); itr++)
+  {
+    res.push_back(*itr);
+  }
+
+  size_t count = res.size();
+  cout << count << endl;
+  for (auto itr : res)
+  {
+    cout << itr << " ";
+  }
+  cout << endl;
   return 0;
 }
