@@ -39,6 +39,8 @@ int main()
   if (st.size() != 1)
   {
     cout << -1 << endl;
+    return 0;
   }
+  cout << *st.begin() << endl;
   return 0;
 }
