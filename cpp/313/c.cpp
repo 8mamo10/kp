@@ -8,43 +8,29 @@ using namespace std;
 using ll = long long;
 // using ull = unsigned long long;
 // long long INF = 1000000000000000000;
-bool finished(vector<ll> A)
-{
-  auto mx = max_element(A.begin(), A.end());
-  auto mn = min_element(A.begin(), A.end());
-  return (*mx - *mn <= 1);
-}
 
 int main()
 {
   int N;
   cin >> N;
-  vector<ll> A(N);
+  vector<int> A(N);
+  ll sum = 0;
   for (int i = 0; i < N; i++)
   {
     cin >> A[i];
+    sum += A[i];
   }
-
-  ll count = 0;
-  while (!finished(A))
+  sort(A.begin(), A.end());
+  vector<int> b(N, sum / N);
+  for (int i = 0; i < sum % N; i++)
   {
-    auto mx = max_element(A.begin(), A.end());
-    auto mn = min_element(A.begin(), A.end());
-    ll diff = ((*mx) - (*mn)) / 2;
-    (*mx) -= diff;
-    (*mn) += diff;
-    count += diff;
-    ////
-    // cout << "---" << endl;
-    // cout << count << endl;
-    // for (auto itr : A)
-    // {
-    //   cout << itr << " ";
-    // }
-    // cout << endl;
-    ////
+    b[N - 1 - i]++;
   }
-  // cout << "---" << endl;
-  cout << count << endl;
+  ll ans = 0;
+  for (int i = 0; i < N; i++)
+  {
+    ans += abs(A[i] - b[i]);
+  }
+  cout << ans / 2 << endl;
   return 0;
 }
