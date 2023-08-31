@@ -41,11 +41,12 @@ int main()
     }
     if (v.size() >= 2)
     {
-      int from = v[v.size()];
+      int from = v[v.size() - 1];
       int to = v[0];
       ans[to] = prev[from];
     }
+    prev = ans;
   }
-
+  cout << ans << endl;
   return 0;
 }
