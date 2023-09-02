@@ -21,32 +21,21 @@ int main()
     cin >> C[i];
   }
 
-  string prev = S;
-  string ans = S;
+  vector<int> p[N + 1];
+  for (int i = 0; i < N; i++)
+  {
+    p[C[i]].push_back(i);
+  }
+
+  string t(N, '?');
   for (int i = 1; i <= M; i++)
   {
-    vector<int> v;
-    for (int j = 0; j < N; j++)
+    int k = p[i].size();
+    for (int j = 0; j < k; j++)
     {
-      if (C[j] == i)
-      {
-        v.push_back(j);
-      }
+      t[p[i][(j + 1) % k]] = S[p[i][j]];
     }
-    for (size_t j = 0; j < v.size() - 1; j++)
-    {
-      int from = v[j];
-      int to = v[j + 1];
-      ans[to] = prev[from];
-    }
-    if (v.size() >= 2)
-    {
-      int from = v[v.size() - 1];
-      int to = v[0];
-      ans[to] = prev[from];
-    }
-    prev = ans;
   }
-  cout << ans << endl;
+  cout << t << endl;
   return 0;
 }
