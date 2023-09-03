@@ -21,8 +21,8 @@ int main()
   vector<int> x(q);
   vector<char> c(q);
 
-  int last_index = 0;
-  int last_change = 0;
+  int last_index = -1;
+  int last_change = -1;
   for (int i = 0; i < q; i++)
   {
     cin >> t[i] >> x[i] >> c[i];
