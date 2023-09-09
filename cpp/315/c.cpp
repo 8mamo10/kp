@@ -15,50 +15,29 @@ int main()
 {
   int n;
   cin >> n;
-  map<ll, vector<ll>> ice;
-  map<ll, ll> max_ice;
+  map<int, vector<ll>> ice;
   for (int i = 0; i < n; i++)
   {
-    ll f, s;
+    int f;
+    ll s;
     cin >> f >> s;
     ice[f].push_back(s);
-    max_ice[f] = max(max_ice[f], s);
   }
 
-  /////
-  // for (auto itr : ice)
-  // {
-  //   cout << itr.first << ":";
-  //   for (auto itr2 : itr.second)
-  //   {
-  //     cout << itr2 << " ";
-  //   }
-  //   cout << endl;
-  // }
-
-  // for (auto itr : max_ice)
-  // {
-  //   cout << itr.first << ":" << itr.second << endl;
-  // }
-  /////
+  vector<ll> best_ice;
+  for (auto itr : ice)
+  {
+    sort(itr.second.begin(), itr.second.end(), comp);
+    best_ice.push_back(itr.second[0]);
+  }
 
   ll ans = 0;
   // s + t
-  if (max_ice.size() >= 2)
+  if (best_ice.size() >= 2)
   {
-    for (auto itr : max_ice)
-    {
-      for (auto itr2 : max_ice)
-      {
-        if (itr.first == itr2.first)
-        {
-          continue;
-        }
-        ans = max(ans, itr.second + itr2.second);
-      }
-    }
+    sort(best_ice.begin(), best_ice.end(), comp);
+    ans = max(ans, best_ice[0] + best_ice[1]);
   }
-  // cout << ans << endl;
   //  s + t / 2
   for (auto itr : ice)
   {
