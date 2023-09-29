@@ -9,9 +9,28 @@ using namespace std;
 // using ull = unsigned long long;
 // long long INF = 1000000000000000000;
 
-int main()
+#include <iostream>
+using namespace std;
+
+int main(void)
 {
-  int N;
-  cin >> N;
+  int n;
+  cin >> n;
+
+  string s;
+  for (int i = 0; i <= n; i++)
+  {
+    s += "-";
+    for (int j = 1; j <= 9; j++)
+    {
+      if (n % j == 0 && i % (n / j) == 0)
+      {
+        s[i] = j + '0';
+        break;
+      }
+    }
+  }
+  cout << s << endl;
+
   return 0;
 }
