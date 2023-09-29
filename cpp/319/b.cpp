@@ -12,7 +12,7 @@ using namespace std;
 #include <iostream>
 using namespace std;
 
-int main(void)
+int main()
 {
   int n;
   cin >> n;
@@ -25,7 +25,8 @@ int main(void)
     {
       if (n % j == 0 && i % (n / j) == 0)
       {
-        s[i] = j + '0';
+        // s[i] = j + '0';
+        s[i] = *to_string(j).c_str();
         break;
       }
     }
