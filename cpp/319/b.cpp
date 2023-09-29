@@ -12,6 +12,13 @@ using namespace std;
 #include <iostream>
 using namespace std;
 
+/**
+ * The above function takes an input integer 'n' and generates a string 's' by iterating through 'n'
+ * and finding the smallest digit 'j' that divides both 'n' and 'i', and then appending that digit to
+ * the string 's'.
+ *
+ * @return The main function is returning an integer value of 0.
+ */
 int main()
 {
   int n;
