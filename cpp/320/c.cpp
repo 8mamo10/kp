@@ -18,5 +18,15 @@ int main()
   {
     cin >> s[i];
   }
+
+  vector<int> a = {1, 2, 3};
+  int count = 0;
+  do
+  {
+    count++;
+    cout << "---" << count << "---" << endl;
+    cout << a[0] << a[1] << a[2] << endl;
+  } while (next_permutation(a.begin(), a.end()));
+
   return 0;
 }
