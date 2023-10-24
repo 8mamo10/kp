@@ -19,5 +19,22 @@ int main()
     cin >> S[i];
   }
   map<int, vector<int>> m;
+  for (int i = 0; i < N; i++)
+  {
+    int c = count(S[i].begin(), S[i].end(), 'o');
+    m[c].push_back(i + 1);
+  }
+  for (int i = N - 1; i >= 0; i--)
+  {
+    if (m[i].empty())
+    {
+      continue;
+    }
+    for (auto itr : m[i])
+    {
+      cout << itr << " ";
+    }
+  }
+  cout << endl;
   return 0;
 }
