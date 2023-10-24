@@ -18,5 +18,6 @@ int main()
   {
     cin >> S[i];
   }
+  map<int, vector<int>> m;
   return 0;
 }
