@@ -13,21 +13,23 @@ int main()
 {
   ll N;
   cin >> N;
-  if (N == 1)
+
+  ll res = N;
+  while (res % 2 == 0)
+  {
+    res = res / 2;
+  }
+  while (res % 3 == 0)
+  {
+    res = res / 3;
+  }
+  if (res == 1)
   {
     cout << "Yes" << endl;
-    return 0;
   }
-  if (N % 2 == 0)
+  else
   {
-    cout << "Yes" << endl;
-    return 0;
+    cout << "No" << endl;
   }
-  if (N % 3 == 0)
-  {
-    cout << "Yes" << endl;
-    return 0;
-  }
-  cout << "No" << endl;
   return 0;
 }
