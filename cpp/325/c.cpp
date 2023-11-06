@@ -42,6 +42,7 @@ int main()
         continue;
       }
       queue<pair<int, int>> que;
+      visited[i][j] = true;
       que.push({i, j});
       while (!que.empty())
       {
@@ -53,13 +54,16 @@ int main()
         {
           int ny = y + dy[k];
           int nx = x + dx[k];
-          if (0 <= ny && nx < H && 0 <= nx && nx < W && S[ny][nx] == '#')
+          if (0 <= ny && ny < H && 0 <= nx && nx < W && S[ny][nx] == '#' && !visited[ny][nx])
           {
-            que.push(ny, nx);
+            visited[ny][nx] = true;
+            que.push({ny, nx});
           }
         }
       }
+      ans++;
     }
   }
+  cout << ans << endl;
   return 0;
 }
