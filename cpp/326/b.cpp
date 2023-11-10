@@ -11,8 +11,19 @@ using namespace std;
 
 int main()
 {
-  string N;
+  int N;
   cin >> N;
+  for (int i = N; i < 1000; i++)
+  {
+    int first = i / 100;
+    int second = (i - first * 100) / 10;
+    int third = i - first * 100 - second * 10;
 
+    if (first * second == third)
+    {
+      cout << i << endl;
+      return 0;
+    }
+  }
   return 0;
 }
