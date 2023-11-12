@@ -13,20 +13,12 @@ bool having(string target, vector<string> list)
   return false;
 }
 
-void print_vector_string_csv(vector<string> v)
+template <typename T>
+void printv(T v)
 {
-  for (int i = 0; i < v.size(); i++)
+  for (size_t i = 0; i < v.size(); i++)
   {
     cout << v[i] << ",";
-  }
-  cout << endl;
-}
-
-void print_vector_int_blank(vector<int> v)
-{
-  for (int i = 0; i < v.size(); i++)
-  {
-    cout << v[i] << " ";
   }
   cout << endl;
 }
