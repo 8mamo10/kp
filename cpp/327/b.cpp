@@ -14,7 +14,7 @@ int main()
 {
   ll B;
   cin >> B;
-  for (ll i = 0; i < 20; i++)
+  for (ll i = 1; i < 20; i++)
   {
     ll ans = 1;
     for (ll j = 0; j < i; j++)
