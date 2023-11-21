@@ -23,23 +23,13 @@ int main()
   int ans = 0;
   for (int i = 0; i < N; i++)
   {
-    int month = i + 1;
-    string s_month = to_string(month);
+    string month = to_string(i + 1);
     int days = D[i];
-    for (int day = 1; day <= days; day++)
+    for (int j = 1; j <= days; j++)
     {
-      string s_day = to_string(day);
-      string s_all = s_month + s_day;
-      char c = s_all[0];
-      size_t count = 0;
-      for (auto s : s_all)
-      {
-        if (c == s)
-        {
-          count++;
-        }
-      }
-      if (s_all.length() == count)
+      string day = to_string(j);
+      string date = month + day;
+      if (size(set<char>(date.begin(), date.end())) == 1)
       {
         ans++;
       }
