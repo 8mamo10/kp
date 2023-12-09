@@ -24,9 +24,9 @@ int main()
   }
   if (d == D)
   {
-    printf("%d %d \n", y, m + 1);
+    printf("%d %d 1\n", y, m + 1);
     return 0;
   }
-  printf("%d %d %d \n", y, m, d + 1);
+  printf("%d %d %d\n", y, m, d + 1);
   return 0;
 }
