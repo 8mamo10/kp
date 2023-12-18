@@ -12,16 +12,6 @@ using ll = long long;
 
 int main()
 {
-  // map<int, int> mp;
-  // mp.insert({1, 111});
-  // mp.insert({3, 333});
-  // mp.insert({2, 222});
-  // for (auto itr : mp)
-  // {
-  //   cout << itr.first << ":" << itr.second << endl;
-  // }
-  // return 0;
-
   int N;
   cin >> N;
   vector<int> A(N);
@@ -42,19 +32,26 @@ int main()
     mp[v] += v;
   }
 
-  for (int i = 0; i < N; i++)
+  map<int, ll> sums;
+  for (auto itr : mp)
   {
-    int v = A[i];
-    ll ans = 0;
-    for (auto itr : mp)
+    int v = itr.first;
+    sums.insert({v, 0});
+    for (auto itr2 : mp)
     {
-      if (itr.first <= v)
+      int w = itr2.first;
+      if (v >= w)
       {
         continue;
       }
-      ans += itr.second;
+      sums[v] += itr2.second;
     }
-    cout << ans << " ";
+  }
+
+  for (int i = 0; i < N; i++)
+  {
+    int v = A[i];
+    cout << sums[v] << " ";
   }
   cout << endl;
   return 0;
