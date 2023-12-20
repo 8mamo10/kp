@@ -19,40 +19,26 @@ int main()
   {
     cin >> A[i];
   }
-
-  map<int, ll> mp;
+  vector<vector<int>> is(1000001);
   for (int i = 0; i < N; i++)
   {
-    int v = A[i];
-    if (mp.find(v) == mp.end())
-    {
-      mp.insert({v, v});
-      continue;
-    }
-    mp[v] += v;
+    is[A[i]].push_back(i);
   }
 
-  map<int, ll> sums;
-  for (auto itr : mp)
+  vector<ll> ans(N);
+  ll now = 0;
+  for (int x = is.size(); x >= 1; x--)
   {
-    int v = itr.first;
-    sums.insert({v, 0});
-    for (auto itr2 : mp)
+    for (auto itr : is[x])
     {
-      int w = itr2.first;
-      if (v >= w)
-      {
-        continue;
-      }
-      sums[v] += itr2.second;
+      ans[itr] = now;
     }
+    now += (ll)x * is[x].size();
   }
 
-  for (int i = 0; i < N; i++)
+  for (auto itr : ans)
   {
-    int v = A[i];
-    cout << sums[v] << " ";
+    cout << itr << " ";
   }
   cout << endl;
-  return 0;
 }
