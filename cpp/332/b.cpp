@@ -14,5 +14,35 @@ int main()
 {
   int K, G, M;
   cin >> K >> G >> M;
+
+  int glass = 0, mug = 0;
+  for (int i = 0; i < K; i++)
+  {
+    if (glass == G)
+    {
+      glass = 0;
+    }
+    else if (mug == 0)
+    {
+      mug = M;
+    }
+    else
+    {
+      // glass != G
+      // mug != 0
+      int diff = G - glass;
+      if (mug >= diff)
+      {
+        glass = G;
+        mug -= diff;
+      }
+      else
+      {
+        glass += mug;
+        mug = 0;
+      }
+    }
+  }
+  cout << glass << " " << mug << endl;
   return 0;
 }
