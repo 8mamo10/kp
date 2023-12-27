@@ -36,7 +36,6 @@ int main()
   for (auto itr : v)
   {
     int buy = 0;
-    int num_1 = count(itr.begin(), itr.end(), '1');
     int num_2 = count(itr.begin(), itr.end(), '2');
     buy += num_2;
     if (M + buy < (int)itr.length())
