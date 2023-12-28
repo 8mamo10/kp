@@ -3,15 +3,24 @@
 ## rust
 
 ```
+$ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
 $ rustup --version
-rustup 1.24.3 (ce5817a94 2021-05-31)
+rustup 1.26.0 (5af9b9484 2023-04-05)
 info: This is the version for the rustup toolchain manager, not the rustc compiler.
-info: The currently active `rustc` version is `rustc 1.59.0 (9d1b2106e 2022-02-23)`
+info: The currently active `rustc` version is `rustc 1.75.0 (82e1608df 2023-12-21)`
+
 $ rustc --version
-rustc 1.59.0 (9d1b2106e 2022-02-23)
+rustc 1.75.0 (82e1608df 2023-12-21)
+
 $ cargo --version
-cargo 1.59.0 (49d8809dc 2022-02-10)
+cargo 1.75.0 (1d8b05cdd 2023-11-20)
+
+$ cargo new r333a
+$ cargo run
 ```
+
+## c++
 
 ```
 $ sudo ln -s /opt/homebrew/bin/g++-13 /usr/local/bin/g++
