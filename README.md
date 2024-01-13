@@ -23,11 +23,15 @@ $ cargo run
 ## c++
 
 ```
+$ _sdk_root=`xcrun --sdk macosx --show-sdk-path`
+$ export LIBRARY_PATH="${_sdk_root}/usr/lib"
+
 $ sudo ln -s /opt/homebrew/bin/g++-13 /usr/local/bin/g++
 $ sudo ln -s /opt/homebrew/bin/gcc-13 /usr/local/bin/gcc
 
 # includePath
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include
 /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/aarch64-apple-darwin21/bits/**
 
-$ g++ a.cpp -Wall -I../ac-library
+$ g++ a.cpp -Wall -I../ac-library --sysroot=${_sdk_root}
 ```
