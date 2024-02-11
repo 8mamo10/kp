@@ -14,11 +14,10 @@ int main()
 {
   int N, Q;
   cin >> N >> Q;
-  vector<pair<int, int>> dragon(N);
+  deque<pair<int, int>> dragon;
   for (int i = 0; i < N; i++)
   {
-    dragon[i].first = i + 1;
-    dragon[i].second = 0;
+    dragon.push_back({i + 1, 0});
   }
   for (int i = 0; i < Q; i++)
   {
@@ -26,28 +25,26 @@ int main()
     cin >> t;
     if (t == 1)
     {
-      string c;
+      char c;
       cin >> c;
-      for (int i = 0; i < N - 1; i++)
+      auto [x, y] = dragon[0];
+      if (c == 'R')
       {
-        dragon[N - 1 - i] = dragon[N - 1 - i - 1];
+        dragon.push_front({x + 1, y});
       }
-      if (c == "R")
+      else if (c == 'L')
       {
-        dragon[0].first++;
+        dragon.push_front({x - 1, y});
       }
-      else if (c == "L")
+      else if (c == 'U')
       {
-        dragon[0].first--;
+        dragon.push_front({x, y + 1});
       }
-      else if (c == "U")
+      else if (c == 'D')
       {
-        dragon[0].second++;
+        dragon.push_front({x, y - 1});
       }
-      else if (c == "D")
-      {
-        dragon[0].second--;
-      }
+      dragon.pop_back();
     }
     else if (t == 2)
     {
