@@ -15,5 +15,21 @@ int main()
 {
   string S;
   cin >> S;
+  if (S[0] != 'A')
+  {
+    cout << "No" << endl;
+    return 0;
+  }
+  if (S.find('B') == string::npos)
+  {
+    cout << "No" << endl;
+    return 0;
+  }
+  if (S[S.length() - 1] != 'C')
+  {
+    cout << "No" << endl;
+    return 0;
+  }
+  cout << "Yes" << endl;
   return 0;
 }
