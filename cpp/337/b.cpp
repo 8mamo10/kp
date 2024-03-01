@@ -15,6 +15,20 @@ int main()
 {
   string S;
   cin >> S;
+
+  auto itr = unique(S.begin(), S.end());
+  // for (itr = S.begin(); itr != S.end(); ++itr)
+  // {
+  //   cout << *itr << endl;
+  // }
+  S.resize(distance(S.begin(), itr));
+  // cout << S << endl;
+  // return 0;
+  if (S.length() != 3)
+  {
+    cout << "No" << endl;
+    return 0;
+  }
   if (S[0] != 'A')
   {
     cout << "No" << endl;
