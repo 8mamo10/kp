@@ -24,25 +24,30 @@ int main()
   S.resize(distance(S.begin(), itr));
   // cout << S << endl;
   // return 0;
-  if (S.length() != 3)
+
+  switch (S.length())
   {
-    cout << "No" << endl;
-    return 0;
-  }
-  if (S[0] != 'A')
-  {
-    cout << "No" << endl;
-    return 0;
-  }
-  if (S.find('B') == string::npos)
-  {
-    cout << "No" << endl;
-    return 0;
-  }
-  if (S[S.length() - 1] != 'C')
-  {
-    cout << "No" << endl;
-    return 0;
+  case 1:
+    if (S != "A" && S != "B" && S != "C")
+    {
+      cout << "No" << endl;
+      return 0;
+    }
+    break;
+  case 2:
+    if (S != "AB" && S != "BC" && S != "AC")
+    {
+      cout << "No" << endl;
+      return 0;
+    }
+    break;
+  case 3:
+    if (S != "ABC")
+    {
+      cout << "No" << endl;
+      return 0;
+    }
+    break;
   }
   cout << "Yes" << endl;
   return 0;
