@@ -24,6 +24,11 @@ int main()
   S.resize(distance(S.begin(), itr));
   // cout << S << endl;
   // return 0;
+  if (S.length() > 3)
+  {
+    cout << "No" << endl;
+    return 0;
+  }
 
   switch (S.length())
   {
