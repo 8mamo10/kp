@@ -14,11 +14,15 @@ bool having(string target, vector<string> list)
 }
 
 template <typename T>
-void printv(T v)
+void printv(T v, bool csv = true)
 {
   for (size_t i = 0; i < v.size(); i++)
   {
-    cout << v[i] << ",";
+    cout << v[i];
+    if (csv)
+    {
+      cout << ",";
+    }
   }
   cout << endl;
 }
