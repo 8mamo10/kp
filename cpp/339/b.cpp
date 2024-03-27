@@ -35,6 +35,9 @@ int main()
     if (color == WHITE)
     {
     }
+    else if (color == BLACK)
+    {
+    }
     else
     {
     }
