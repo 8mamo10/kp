@@ -26,14 +26,19 @@ int main()
     printv(itr, false);
   }
 
+  // x, y
   pair<int, int> current = {0, 0};
-  pair<int, int> direction = {0, 1};
+  // x, y
+  pair<int, int> directions[] = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+  int direction = 0;
 
   for (int i = 0; i < N; i++)
   {
     char color = grid[current.second][current.first];
     if (color == WHITE)
     {
+      grid[current.second][current.first] = BLACK;
+      directions[(direction + 1) % 4];
     }
     else if (color == BLACK)
     {
