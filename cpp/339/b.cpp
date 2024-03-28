@@ -27,25 +27,38 @@ int main()
   }
 
   // x, y
-  pair<int, int> current = {0, 0};
+  pair<int, int> pos = {0, 0};
+  int dir = 0;
   // x, y
   pair<int, int> directions[] = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
-  int direction = 0;
 
   for (int i = 0; i < N; i++)
   {
-    char color = grid[current.second][current.first];
+    char color = grid[pos.second][pos.first];
     if (color == WHITE)
     {
-      grid[current.second][current.first] = BLACK;
-      directions[(direction + 1) % 4];
-    }
-    else if (color == BLACK)
-    {
+      grid[pos.second][pos.first] = BLACK;
+      dir++;
+      auto direction = directions[dir % 4];
+      pos.first += direction.first;
+      pos.second += direction.second;
     }
     else
     {
+      grid[pos.second][pos.first] = WHITE;
+      dir--;
+      auto direction = directions[dir % 4];
+      pos.first += direction.first;
+      pos.second += direction.second;
     }
+  }
+  for (auto itr : grid)
+  {
+    for (auto itr2 : itr)
+    {
+      cout << itr2;
+    }
+    cout << endl;
   }
   return 0;
 }
