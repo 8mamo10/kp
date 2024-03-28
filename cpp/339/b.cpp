@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#include "my.h"
+// #include "my.h"
 using namespace std;
 
 // #include <atcoder/modint>
@@ -29,15 +29,15 @@ int main()
 
   for (int i = 0; i < N; i++)
   {
-    cout << "---" << i << "---" << endl;
+    // cout << "---" << i << "---" << endl;
     for (auto itr : grid)
     {
-      printv(itr, false);
+      // printv(itr, false);
     }
-    cout << "I am at " << pos.first << "," << pos.second << endl;
+    // cout << "I am at " << pos.first << "," << pos.second << endl;
 
     char color = grid[pos.second][pos.first];
-    cout << "The color is " << color << endl;
+    // cout << "The color is " << color << endl;
 
     if (color == WHITE)
     {
@@ -45,7 +45,7 @@ int main()
       dir++;
       dir = dir % 4;
       auto direction = directions[dir];
-      cout << "Move: " << direction.first << "," << direction.second << endl;
+      // cout << "Move: " << direction.first << "," << direction.second << endl;
       pos.first += direction.first;
       if (pos.first < 0)
       {
@@ -74,7 +74,7 @@ int main()
         dir = 3;
       }
       auto direction = directions[dir];
-      cout << "Move: " << direction.first << "," << direction.second << endl;
+      // cout << "Move: " << direction.first << "," << direction.second << endl;
       pos.first += direction.first;
       if (pos.first < 0)
       {
