@@ -29,41 +29,12 @@ int main()
 
   for (int i = 0; i < N; i++)
   {
-    // cout << "---" << i << "---" << endl;
-    for (auto itr : grid)
-    {
-      // printv(itr, false);
-    }
-    // cout << "I am at " << pos.first << "," << pos.second << endl;
-
     char color = grid[pos.second][pos.first];
-    // cout << "The color is " << color << endl;
-
     if (color == WHITE)
     {
       grid[pos.second][pos.first] = BLACK;
       dir++;
       dir = dir % 4;
-      auto direction = directions[dir];
-      // cout << "Move: " << direction.first << "," << direction.second << endl;
-      pos.first += direction.first;
-      if (pos.first < 0)
-      {
-        pos.first += W;
-      }
-      if (pos.first >= W)
-      {
-        pos.first = 0;
-      }
-      pos.second += direction.second;
-      if (pos.second < 0)
-      {
-        pos.second += H;
-      }
-      if (pos.second >= H)
-      {
-        pos.second = 0;
-      }
     }
     else
     {
@@ -73,26 +44,25 @@ int main()
       {
         dir = 3;
       }
-      auto direction = directions[dir];
-      // cout << "Move: " << direction.first << "," << direction.second << endl;
-      pos.first += direction.first;
-      if (pos.first < 0)
-      {
-        pos.first += W;
-      }
-      if (pos.first >= W)
-      {
-        pos.first = 0;
-      }
-      pos.second += direction.second;
-      if (pos.second < 0)
-      {
-        pos.second += H;
-      }
-      if (pos.second >= H)
-      {
-        pos.second = 0;
-      }
+    }
+    auto direction = directions[dir];
+    pos.first += direction.first;
+    if (pos.first < 0)
+    {
+      pos.first += W;
+    }
+    if (pos.first >= W)
+    {
+      pos.first = 0;
+    }
+    pos.second += direction.second;
+    if (pos.second < 0)
+    {
+      pos.second += H;
+    }
+    if (pos.second >= H)
+    {
+      pos.second = 0;
     }
   }
   for (auto itr : grid)
