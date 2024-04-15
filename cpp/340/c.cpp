@@ -11,29 +11,24 @@ using ll = long long;
 // long long INF = 1000000000000000000;
 // long long INF = 20;
 
+map<ll, ll> m;
+ll f(ll n)
+{
+  if (n == 1)
+  {
+    return 0;
+  }
+  if (m.count(n))
+  {
+    return m[n];
+  }
+  return m[n] = f(n / 2) + f((n + 1) / 2) + n;
+}
+
 int main()
 {
   ll n;
   cin >> n;
-
-  ll ans = 0;
-  vector<ll> a;
-  a.push_back(n);
-  while (true)
-  {
-    // printv(a);
-    auto x = max_element(a.begin(), a.end());
-    if (*x < 2)
-    {
-      break;
-    }
-    ans += *x;
-    ll l = ceil((long double)*x / 2);
-    ll r = floor((long double)*x / 2);
-    a.erase(x);
-    a.push_back(l);
-    a.push_back(r);
-  }
-  cout << ans << endl;
+  cout << f(n) << endl;
   return 0;
 }
