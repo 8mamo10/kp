@@ -19,7 +19,7 @@ int main()
   {
     m[s[i]].push_back(i);
   }
-  int ans = 1;
+  int ans = 0;
   for (auto itr : m)
   {
     for (auto itr2 : m)
@@ -31,6 +31,13 @@ int main()
       ans += itr.second.size() * itr2.second.size();
     }
   }
-  cout << ans / 2 << endl;
+  if (ans == 0)
+  {
+    cout << 1 << endl;
+  }
+  else
+  {
+    cout << ans / 2 << endl;
+  }
   return 0;
 }
