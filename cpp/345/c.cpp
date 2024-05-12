@@ -6,38 +6,38 @@ using namespace std;
 // using namespace atcoder;
 // using mint = modint998244353;
 
-// using ll = long long;
+using ll = long long;
 // using ull = unsigned long long;
 // long long INF = 1000000000000000000;
+
+ll c2(ll n)
+{
+  return n * (n - 1) / 2;
+}
 
 int main()
 {
   string s;
   cin >> s;
-  map<char, vector<int>> m;
-  for (size_t i = 0; i < s.length(); i++)
+  int n = s.size();
+
+  ll same = 0;
+  map<char, int> cnt;
+  for (auto x : s)
   {
-    m[s[i]].push_back(i);
+    cnt[x]++;
   }
-  int ans = 0;
-  for (auto itr : m)
+  for (auto x : cnt)
   {
-    for (auto itr2 : m)
-    {
-      if (itr.first == itr2.first)
-      {
-        continue;
-      }
-      ans += itr.second.size() * itr2.second.size();
-    }
+    int m = x.second;
+    same += c2(m);
   }
-  if (ans == 0)
+  ll diff = c2(n) - same;
+  ll ans = diff;
+  if (same)
   {
-    cout << 1 << endl;
+    ans++;
   }
-  else
-  {
-    cout << ans / 2 << endl;
-  }
+  cout << ans << endl;
   return 0;
 }
