@@ -19,6 +19,24 @@ int main()
   {
     cin >> x[i] >> y[i];
   }
-
+  for (int i = 0; i < n; i++)
+  {
+    int max = 0;
+    int ans = 0;
+    for (int j = 0; j < n; j++)
+    {
+      if (j == i)
+      {
+        continue;
+      }
+      int d = pow((x[i] - x[j]), 2.0) + pow(y[i] - y[j], 2.0);
+      if (d > max)
+      {
+        ans = j;
+        max = d;
+      }
+    }
+    cout << ans + 1 << endl;
+  }
   return 0;
 }
