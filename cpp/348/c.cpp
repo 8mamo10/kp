@@ -19,5 +19,6 @@ int main()
   {
     cin >> a[i] >> c[i];
   }
+  map<int, int> m;
   return 0;
 }
