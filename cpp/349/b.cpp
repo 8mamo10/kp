@@ -14,5 +14,21 @@ int main()
 {
   string s;
   cin >> s;
+  map<char, int> m;
+  for (auto itr : s)
+  {
+    if (m.find(itr) == m.end())
+    {
+      m[itr] = 1;
+    }
+    else
+    {
+      m[itr]++;
+    }
+  }
+  for (auto itr : m)
+  {
+    cout << itr.first << ":" << itr.second << endl;
+  }
   return 0;
 }
