@@ -27,7 +27,7 @@ int main()
     }
   }
 
-  for (int i = 1; i <= s.length(); i++)
+  for (int i = 0; i <= (int)s.length(); i++)
   {
     int cnt = 0;
     for (auto itr : m)
