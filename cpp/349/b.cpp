@@ -26,9 +26,22 @@ int main()
       m[itr]++;
     }
   }
-  for (auto itr : m)
+  for (int i = 0; i < (int)s.length(); i++)
   {
-    cout << itr.first << ":" << itr.second << endl;
+    int cnt = 0;
+    for (auto itr : m)
+    {
+      if (itr.second == i)
+      {
+        cnt++;
+      }
+    }
+    if (cnt != 0 && cnt != 2)
+    {
+      cout << "No" << endl;
+      return 0;
+    }
   }
+  cout << "Yes" << endl;
   return 0;
 }
