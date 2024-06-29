@@ -34,4 +34,7 @@ $ sudo ln -s /opt/homebrew/bin/gcc-13 /usr/local/bin/gcc
 /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/aarch64-apple-darwin21/bits/**
 
 $ g++ a.cpp -Wall -I../ac-library -I../util --sysroot=${SDK_ROOT}
+
+# for bits/stdc++.h>
+_GLIBCXX_HOSTED=1
 ```
