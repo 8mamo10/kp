@@ -15,7 +15,8 @@ int main()
   string s;
   cin >> s;
   string id = s.substr(3, 3);
-  int num = atoi(id.c_str());
+  // int num = atoi(id.c_str());
+  int num = stoi(id);
   if (num == 316)
   {
     cout << "No" << endl;
