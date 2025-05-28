@@ -18,6 +18,10 @@ cargo 1.75.0 (1d8b05cdd 2023-11-20)
 
 $ cargo new r333a
 $ cargo run
+
+$ rustup update
+$ rustc --version
+rustc 1.87.0 (17067e9ac 2025-05-09)
 ```
 
 ## c++
