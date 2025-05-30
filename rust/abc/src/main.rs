@@ -1,34 +1,48 @@
+use std::{collections::HashSet, vec};
+
 fn main() {
     proconio::input! {
-        t: String,
-        u: String
+        n: usize,
+        _m: usize,
+        q: usize,
     }
-    let mut qustion_indeces: Vec<usize> = Vec::new();
-    for (i, c) in t.chars().enumerate() {
-        if c == '?' {
-            qustion_indeces.push(i);
-        }
-    }
-    let alphabets: Vec<char> = (b'a'..=b'z').map(|c| c as char).collect();
-    //println!("{:?}", alphabets)
-    for &a in &alphabets {
-        for &b in &alphabets {
-            for &c in &alphabets {
-                for &d in &alphabets {
-                    let mut s: Vec<char> = t.chars().collect();
-                    s[qustion_indeces[0]] = a;
-                    s[qustion_indeces[1]] = b;
-                    s[qustion_indeces[2]] = c;
-                    s[qustion_indeces[3]] = d;
 
-                    let s2: String = s.into_iter().collect();
-                    if s2.contains(&u) {
-                        println!("{}", "Yes");
-                        return;
-                    }
+    let mut all_access_granted: Vec<bool> = vec![false; n + 1];
+    let mut spedific_access_granted: Vec<HashSet<usize>> = vec![HashSet::new(); n + 1];
+
+    for _ in 0..q {
+        proconio::input! {
+            query_type: u8,
+        }
+
+        match query_type {
+            1 => {
+                proconio::input! {
+                    x: usize,
+                    y: usize
+                }
+                if !all_access_granted[x] {
+                    spedific_access_granted[x].insert(y);
                 }
             }
+            2 => {
+                proconio::input! {
+                    x: usize
+                }
+                all_access_granted[x] = true;
+            }
+            3 => {
+                proconio::input! {
+                    x: usize,
+                    y: usize,
+                }
+                if all_access_granted[x] || spedific_access_granted[x].contains(&y) {
+                    println!("Yes");
+                } else {
+                    println!("No");
+                }
+            }
+            _ => unreachable!(),
         }
     }
-    println!("No");
 }
