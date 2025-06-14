@@ -2,12 +2,24 @@ use proconio::input;
 
 fn main() {
     input! {
-        a: i32,
-        b: i32,
+        x: i64,
+        y: i64,
     }
 
-    let result: f32 = a as f32 / b as f32;
-    let round = (result + 0.5).floor() as i32;
+    let mut count: i64 = 0;
 
-    println!("{}", round);
+    for i in 1..=6 {
+        for j in 1..=6 {
+            if i + j >= x {
+                count += 1;
+                continue;
+            }
+            if (i - j).abs() >= y {
+                count += 1;
+                continue;
+            }
+        }
+    }
+
+    println!("{}", (count as f64 / 36.0));
 }
