@@ -2,24 +2,21 @@ use proconio::input;
 
 fn main() {
     input! {
-        x: i64,
-        y: i64,
+        n: usize,
+        s: i64,
+        t: [i64; n],
     }
 
-    let mut count: i64 = 0;
-
-    for i in 1..=6 {
-        for j in 1..=6 {
-            if i + j >= x {
-                count += 1;
-                continue;
-            }
-            if (i - j).abs() >= y {
-                count += 1;
-                continue;
-            }
+    let sleep_threshold: f64 = s as f64 + 0.5;
+    let mut last_time: i64 = 0;
+    for i in 0..n {
+        let current_time = t[i];
+        let elapsed_time = (current_time - last_time) as f64;
+        if elapsed_time >= sleep_threshold {
+            println!("No");
+            return;
         }
+        last_time = current_time;
     }
-
-    println!("{}", (count as f64 / 36.0));
+    println!("Yes");
 }
