@@ -1,24 +1,20 @@
-use std::collections::HashSet;
-
 use proconio::input;
 
 fn main() {
     input! {
         n: usize,
-        a: [i64; n],
+        t: String,
+        a: String,
     }
 
-    let mut unique_elements: HashSet<i64> = HashSet::new();
-    for x in a {
-        unique_elements.insert(x);
+    let t_chars: Vec<char> = t.chars().collect();
+    let a_chars: Vec<char> = a.chars().collect();
+
+    for i in 0..n {
+        if t_chars[i] == 'o' && a_chars[i] == 'o' {
+            println!("Yes");
+            return;
+        }
     }
-    let mut sorted_unique_elements: Vec<i64> = unique_elements.iter().cloned().collect();
-    sorted_unique_elements.sort();
-    println!("{} ", sorted_unique_elements.len());
-    let output = sorted_unique_elements
-        .iter()
-        .map(|x| x.to_string())
-        .collect::<Vec<String>>()
-        .join(" ");
-    println!("{}", output);
+    println!("No");
 }
