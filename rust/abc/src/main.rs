@@ -3,19 +3,14 @@ use proconio::input;
 fn main() {
     input! {
         n: usize,
-        mut a: [i64; n]
+        a: [i64; n],
+        k: i64,
     }
-    a.sort();
-    let mut max_x = 0;
-    for x_candidate in (0..=n).rev() {
-        if x_candidate == 0 {
-            max_x = 0;
-            break;
-        }
-        if a[n - x_candidate] >= x_candidate as i64 {
-            max_x = x_candidate;
-            break;
+    let mut ans = 0;
+    for i in 0..n {
+        if a[i] >= k {
+            ans += 1;
         }
     }
-    println!("{}", max_x);
+    println!("{}", ans);
 }
