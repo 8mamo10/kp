@@ -3,14 +3,11 @@ use proconio::input;
 fn main() {
     input! {
         n: usize,
-        a: [i64; n],
-        k: i64,
+        q: usize,
+        x: [i64; q],
     }
-    let mut ans = 0;
-    for i in 0..n {
-        if a[i] >= k {
-            ans += 1;
-        }
+    for i in 0..q {
+        print!("{} ", x[i]);
     }
-    println!("{}", ans);
+    println!("");
 }
