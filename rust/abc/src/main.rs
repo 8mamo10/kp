@@ -4,26 +4,38 @@ fn main() {
     input! {
         n: usize,
         q: usize,
-        x: [usize; q],
     }
-    //print!("{} {} {:?}", n, q, x);
-    let mut box_count = vec![0; n + 1];
-    for i in 0..q {
-        if x[i] != 0 {
-            print!("{} ", x[i]);
-            box_count[x[i]] += 1;
-            continue;
+
+    let mut a: Vec<i64> = (1..=n as i64).collect();
+    let mut head_offset: usize = 0;
+
+    for _ in 0..q {
+        input! {
+            query_type: u8,
         }
-        let mut min_count = usize::MAX;
-        let mut min_box = usize::MAX;
-        for j in 1..=n {
-            if box_count[j] < min_count {
-                min_count = box_count[j];
-                min_box = j;
+        match query_type {
+            1 => {
+                input! {
+                    p: usize,
+                    x: i64,
+                }
+                let physical_idx = (p - 1 + head_offset) % n;
+                a[physical_idx] = x;
             }
+            2 => {
+                input! {
+                    p: usize,
+                }
+                let physical_idx = (p - 1 + head_offset) % n;
+                println!("{}", a[physical_idx]);
+            }
+            3 => {
+                input! {
+                    k: usize,
+                }
+                head_offset = (head_offset + k) % n;
+            }
+            _ => panic!("Unexpected query type: {}", query_type),
         }
-        print!("{} ", min_box);
-        box_count[min_box] += 1;
     }
-    println!("");
 }
