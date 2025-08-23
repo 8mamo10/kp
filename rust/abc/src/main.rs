@@ -2,18 +2,21 @@ use proconio::input;
 
 fn main() {
     input! {
-        n: usize,
+        s: String,
+        t: String,
     }
 
-    let mut count = 0;
-    for _ in 0..n {
-        input! {
-            a: i64,
-            b: i64,
-        }
-        if b > a {
-            count += 1;
+    let uppers = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let s_chars: Vec<char> = s.chars().collect();
+
+    for i in 1..s_chars.len() {
+        if uppers.contains(s_chars[i]) {
+            let a = s_chars[i - 1];
+            if !t.contains(a) {
+                println!("No");
+                return;
+            }
         }
     }
-    println!("{}", count)
+    println!("Yes");
 }
