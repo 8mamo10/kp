@@ -3,16 +3,18 @@ use proconio::input;
 fn main() {
     input! {
         n: usize,
-        m: usize,
-        a: [usize; n],
+        m: i32,
+        a: [i32; n],
     }
     let mut total = 0;
-    for i in 0..n {
-        total += a[i];
+    for weight in a.iter() {
+        total += weight;
     }
-    if total > m {
-        println!("No");
+
+    if total <= m {
+        println!("Yes");
         return;
+    } else {
+        println!("No");
     }
-    println!("Yes");
 }
