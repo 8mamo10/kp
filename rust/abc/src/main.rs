@@ -3,18 +3,17 @@ use proconio::input;
 fn main() {
     input! {
         n: usize,
-        m: i32,
-        a: [i32; n],
+        s: [String; n],
     }
-    let mut total = 0;
-    for weight in a.iter() {
-        total += weight;
+    let mut dictionary = std::collections::HashMap::new();
+    for i in 0..n {
+        for j in 0..n {
+            if i == j {
+                continue;
+            }
+            let key = format!("{}{}", s[i], s[j]);
+            dictionary.insert(key, true);
+        }
     }
-
-    if total <= m {
-        println!("Yes");
-        return;
-    } else {
-        println!("No");
-    }
+    print!("{}\n", dictionary.len())
 }
