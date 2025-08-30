@@ -2,18 +2,19 @@ use proconio::input;
 
 fn main() {
     input! {
-        n: usize,
-        s: [String; n],
+        n: i64,
+        l: i64,
+        r: i64,
     }
-    let mut dictionary = std::collections::HashMap::new();
-    for i in 0..n {
-        for j in 0..n {
-            if i == j {
-                continue;
-            }
-            let key = format!("{}{}", s[i], s[j]);
-            dictionary.insert(key, true);
+    let mut count = 0;
+    for _ in 0..n {
+        input! {
+            x: i64,
+            y: i64,
+        }
+        if x <= l && r <= y {
+            count += 1;
         }
     }
-    print!("{}\n", dictionary.len())
+    println!("{}", count)
 }
