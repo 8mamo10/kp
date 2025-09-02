@@ -2,19 +2,23 @@ use proconio::input;
 
 fn main() {
     input! {
-        n: i64,
-        l: i64,
-        r: i64,
+        n: usize,
     }
-    let mut count = 0;
+    let mut result_char = String::new();
+    let mut total_len = 0;
     for _ in 0..n {
         input! {
-            x: i64,
-            y: i64,
+            c: char,
+            l: usize,
         }
-        if x <= l && r <= y {
-            count += 1;
+        total_len += l;
+        if total_len > 100 {
+            println!("Too Long");
+            return;
+        }
+        for _ in 0..l {
+            result_char.push(c);
         }
     }
-    println!("{}", count)
+    println!("{}", result_char)
 }
