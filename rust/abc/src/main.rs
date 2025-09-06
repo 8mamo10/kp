@@ -2,13 +2,20 @@ use proconio::input;
 
 fn main() {
     input! {
-        n: usize,
-        a: [usize; n],
-        x: usize,
+        s: String,
     }
-    if a.contains(&x) {
-        println!("Yes");
-        return;
+    let mut is_processing: bool = false;
+    let v: Vec<char> = s.chars().collect();
+    for i in 0..v.len() {
+        if v[i] == '#' {
+            print!("{}", i + 1);
+            if is_processing {
+                println!();
+                is_processing = false;
+            } else {
+                print!(",");
+                is_processing = true
+            }
+        }
     }
-    println!("No");
 }
