@@ -3,21 +3,13 @@ use proconio::input;
 
 fn main() {
     input! {
-        n: usize,
-        m: usize,
-        mut a: [i64; n],
-        b: [i64; m],
+        _n: usize,
+        s: String,
+
     }
-    for i in 0..b.len() {
-        for j in 0..a.len() {
-            if a[j] == b[i] {
-                a.remove(j);
-                break;
-            }
-        }
+    if s.ends_with("tea") {
+        println!("Yes");
+    } else {
+        println!("No");
     }
-    for &val in a.iter() {
-        print!("{} ", val);
-    }
-    println!()
 }
