@@ -3,13 +3,13 @@ use proconio::input;
 
 fn main() {
     input! {
-        _n: usize,
         s: String,
-
     }
-    if s.ends_with("tea") {
-        println!("Yes");
-    } else {
-        println!("No");
+
+    match s.as_str() {
+        "red" => println!("SSS"),
+        "blue" => println!("FFF"),
+        "green" => println!("MMM"),
+        _ => println!("Unknown"),
     }
 }
