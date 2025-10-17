@@ -3,13 +3,13 @@ use proconio::input;
 
 fn main() {
     input! {
-        s: String,
+        x: u64,
+        y: u64,
     }
-
-    match s.as_str() {
-        "red" => println!("SSS"),
-        "blue" => println!("FFF"),
-        "green" => println!("MMM"),
-        _ => println!("Unknown"),
+    let month = (x + y) % 12;
+    if month == 0 {
+        println!("12");
+    } else {
+        println!("{}", month);
     }
 }
