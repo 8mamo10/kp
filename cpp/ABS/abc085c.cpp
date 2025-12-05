@@ -11,21 +11,15 @@ int main()
     {
         for (int j = 0; j <= n; j++) // 5000
         {
-            for (int k = 0; k <= n; k++) // 1000
+            int k = n - i - j; // 1000
+            if (k < 0)
             {
-                if (i + j + k > n)
-                {
-                    break;
-                }
-                if (i + j + k != n)
-                {
-                    continue;
-                }
-                if (10000 * i + 5000 * j + 1000 * k == y)
-                {
-                    printf("%d %d %d\n", i, j, k);
-                    return 0;
-                }
+                break;
+            }
+            if (10000 * i + 5000 * j + 1000 * k == y)
+            {
+                printf("%d %d %d\n", i, j, k);
+                return 0;
             }
         }
     }
