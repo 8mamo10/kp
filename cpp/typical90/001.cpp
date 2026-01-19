@@ -1,34 +1,51 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+long N, L, K;
+long A[100005];
+
+bool solve(long m)
+{
+    long count = 0;
+    long pre = 0;
+    for (int i = 1; i <= N; i++)
+    {
+        if (A[i] - pre >= m && L - A[i] >= m)
+        {
+            count++;
+            pre = A[i];
+        }
+    }
+    if (count >= K)
+    {
+        return true;
+    }
+    return false;
+}
+
 int main()
 {
-    // long n, l, k;
-    // vector<long> a(n);
-    // cin >> n >> l >> k;
-    // for (int i = 0; i < n; i++)
-    // {
-    //     cin >> a[i];
-    // }
+    cin >> N >> L >> K;
+    for (int i = 1; i <= N; i++)
+    {
+        cin >> A[i];
+    }
 
-    int left = 20, right = 36;
+    long left = -1;
+    long right = L + 1;
 
     while (right - left > 1)
     {
-        int mid = left + (right - left) / 2;
-        cout << "Is the age same or more than " << mid << " ? (yes / no)" << endl;
-        string ans;
-        cin >> ans;
-
-        if (ans == "yes")
-        {
-            left = mid;
-        }
-        else
+        long mid = left + (right - left) / 2;
+        if (solve(mid) == false)
         {
             right = mid;
         }
+        else
+        {
+            left = mid;
+        }
     }
-    cout << "The age is " << left << endl;
+    cout << left << endl;
     return 0;
 }
