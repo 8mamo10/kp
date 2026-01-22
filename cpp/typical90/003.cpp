@@ -5,14 +5,15 @@ int N;
 int A[500000];
 int B[500000];
 
+const int INF = (1 << 29);
 vector<int> graph[500000];
 int dist[500000];
 
 void getdist(int start)
 {
-    for (int i = 1; i < N; i++)
+    for (int i = 1; i <= N; i++)
     {
-        dist[i] = INT_MAX;
+        dist[i] = INF;
     }
     queue<int> q;
     q.push(start);
@@ -23,7 +24,7 @@ void getdist(int start)
         q.pop();
         for (int to : graph[pos])
         {
-            if (dist[to] == INT_MAX)
+            if (dist[to] == INF)
             {
                 dist[to] = dist[pos] + 1;
                 q.push(to);
@@ -35,11 +36,11 @@ void getdist(int start)
 int main()
 {
     cin >> N;
-    for (int i = 1; i < N - 1; i++)
+    for (int i = 1; i <= N - 1; i++)
     {
         cin >> A[i] >> B[i];
         graph[A[i]].push_back(B[i]);
-        graph[B[i]].push_back(B[i]);
+        graph[B[i]].push_back(A[i]);
     }
 
     getdist(1);
@@ -59,8 +60,6 @@ int main()
     {
         maxn2 = max(maxn2, dist[i]);
     }
-    cout << (1 << 29) << endl;
-    cout << maxn2 << endl;
     cout << maxn2 + 1 << endl;
     return 0;
 }
