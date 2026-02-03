@@ -1,10 +1,33 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main()
+long long mod = 1000000007;
+long long N, B, K;
+long long C[11];
 
+long long dp[10009][33];
+
+int main()
 {
-    long long N, B, K;
     cin >> N >> B >> K;
+    for (int i = 1; i <= K; i++)
+    {
+        cin >> C[i];
+    }
+
+    dp[0][0] = 1;
+    for (int i = 0; i < N; i++)
+    {
+        for (int j = 0; j < B; j++)
+        {
+            for (int k = 1; k <= K; k++)
+            {
+                int next = (10 * j + C[k]) % B;
+                dp[i + 1][next] += dp[i][j];
+                dp[i + 1][next] %= mod;
+            }
+        }
+    }
+    cout << dp[N][0] << endl;
     return 0;
 }
